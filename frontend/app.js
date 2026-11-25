@@ -26,20 +26,20 @@ const BROWSER_UA =
 const LOG_WINDOW = 4000;
 
 const MILESTONES = [
-  { days: 7, tier: "Bronze", color: "#CD7F32" },
-  { days: 14, tier: "Silver", color: "#C0C0C0" },
-  { days: 30, tier: "Gold", color: "#FFD700" },
-  { days: 60, tier: "Platinum", color: "#E5E4E2" },
-  { days: 100, tier: "Diamond", color: "#B9F2FF" },
+  { days: 7, tierKey: "tierBronze", color: "#CD7F32" },
+  { days: 14, tierKey: "tierSilver", color: "#C0C0C0" },
+  { days: 30, tierKey: "tierGold", color: "#FFD700" },
+  { days: 60, tierKey: "tierPlatinum", color: "#E5E4E2" },
+  { days: 100, tierKey: "tierDiamond", color: "#B9F2FF" },
 ];
 
 // Special badges: 1 = Genesis (first 7 days after deploy only),
 // 2 = Survivor (7/7 days in any Season 1 week), 3 = Champion (top 3
 // Season 1 streaks, claimable after the season ends).
 const SPECIAL_BADGES = [
-  { kind: 1, name: "Genesis", color: "#FF6B35", desc: "Checked in during the first 7 days after deploy. Window closes forever after one week." },
-  { kind: 2, name: "Survivor", color: "#7EE2A8", desc: "Checked in on all 7 days of a Season 1 week (7-day clean run, no shield save)." },
-  { kind: 3, name: "Champion", color: "#FFD700", desc: "One of the three longest Season 1 streaks. Claimable after the season ends." },
+  { kind: 1, name: "Genesis", color: "#FF6B35", descKey: "descGenesis" },
+  { kind: 2, name: "Survivor", color: "#7EE2A8", descKey: "descSurvivor" },
+  { kind: 3, name: "Champion", color: "#FFD700", descKey: "descChampion" },
 ];
 const SEASON_END_TS = 1796803200; // 2026-12-09 08:00:00 UTC
 
@@ -53,6 +53,8 @@ let contract = null;
 let userAddress = null;
 let userSigner = null;
 let myReferrer = ethers.ZeroAddress;
+let noAgentId = false;
+let myReferredAddr = null;
 
 function makeProvider(url) {
   const req = new ethers.FetchRequest(url);
@@ -146,19 +148,19 @@ async function loadLeaderboardAndRecent() {
     lb.innerHTML = rows.length
       ? rows.slice(0, 10).map((r, i) =>
           `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
-          `<span class="num">${r.effective}🔥 (best ${r.longest})</span></li>`).join("")
-      : `<li class="muted">No check-ins yet — be the first.</li>`;
+          `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`).join("")
+      : `<li class="muted">${t("noCheckIns")}</li>`;
 
     const last = events.slice(-10).reverse();
     recent.innerHTML = last.length
       ? last.map((ev) =>
-          `<li><span class="addr">${shortAddr(ev.args.user)}</span> checked in — ` +
-          `streak ${Number(ev.args.currentStreak)} · ${dayToDate(ev.args.day)}</li>`).join("")
-      : `<li class="muted">No check-ins yet.</li>`;
+          `<li><span class="addr">${shortAddr(ev.args.user)}</span> ` +
+          `${t("checkedIn", { streak: Number(ev.args.currentStreak), date: dayToDate(ev.args.day) })}</li>`).join("")
+      : `<li class="muted">${t("recentEmpty")}</li>`;
   } catch (e) {
     console.warn("loadLeaderboardAndRecent failed:", e.message);
-    lb.innerHTML = `<li class="muted">Could not load leaderboard.</li>`;
-    recent.innerHTML = `<li class="muted">Could not load recent check-ins.</li>`;
+    lb.innerHTML = `<li class="muted">${t("loadLbFail")}</li>`;
+    recent.innerHTML = `<li class="muted">${t("loadRecentFail")}</li>`;
   }
 }
 
@@ -176,11 +178,11 @@ async function loadTopReferrers() {
     el.innerHTML = counts.length
       ? counts.slice(0, 10).map((r, i) =>
           `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
-          `<span class="num">${r.count} qualified</span></li>`).join("")
-      : `<li class="muted">No referrals yet — invite a friend and earn a shield.</li>`;
+          `<span class="num">${r.count} ${t("qualified")}</span></li>`).join("")
+      : `<li class="muted">${t("noReferrals")}</li>`;
   } catch (e) {
     console.warn("loadTopReferrers failed:", e.message);
-    el.innerHTML = `<li class="muted">Could not load top inviters.</li>`;
+    el.innerHTML = `<li class="muted">${t("loadRefFail")}</li>`;
   }
 }
 
@@ -190,10 +192,10 @@ function renderBadges(myLongest, claimed) {
     const canClaim = !isClaimed && myLongest >= m.days && userAddress;
     return `<div class="badge ${isClaimed ? "earned" : ""}">
       <div class="badge-days" style="color:${m.color}">${m.days}</div>
-      <div class="badge-tier" style="color:${m.color}">${m.tier}</div>
+      <div class="badge-tier" style="color:${m.color}">${t(m.tierKey)}</div>
       ${isClaimed
-        ? `<div class="claimed">Claimed ✓</div>`
-        : `<button data-milestone="${m.days}" ${canClaim ? "" : "disabled"}>Claim badge</button>`}
+        ? `<div class="claimed">${t("claimed")}</div>`
+        : `<button data-milestone="${m.days}" ${canClaim ? "" : "disabled"}>${t("claimBadge")}</button>`}
     </div>`;
   }).join("");
   document.querySelectorAll("#badgeGrid button[data-milestone]").forEach((btn) => {
@@ -207,12 +209,12 @@ function renderSpecialBadges(claimed, canClaim, genesisOpen) {
     const ok = canClaim[b.kind] && userAddress;
     return `<div class="badge ${isClaimed ? "earned" : ""}">
       <div class="badge-days" style="color:${b.color}">${b.name}</div>
-      <div class="badge-desc">${b.desc}</div>
+      <div class="badge-desc">${t(b.descKey)}</div>
       ${isClaimed
-        ? `<div class="claimed">Claimed ✓</div>`
+        ? `<div class="claimed">${t("claimed")}</div>`
         : b.kind === 1 && !genesisOpen
-          ? `<div class="muted small">Window closed</div>`
-          : `<button data-kind="${b.kind}" ${ok ? "" : "disabled"}>Claim badge</button>`}
+          ? `<div class="muted small">${t("windowClosed")}</div>`
+          : `<button data-kind="${b.kind}" ${ok ? "" : "disabled"}>${t("claimBadge")}</button>`}
     </div>`;
   }).join("");
   document.querySelectorAll("#specialGrid button[data-kind]").forEach((btn) => {
@@ -249,8 +251,8 @@ async function loadSpecialBadges() {
     }
     renderSpecialBadges(claimed, canClaim, genesisOpen);
     $("genesisNote").textContent = genesisOpen
-      ? `Genesis window is open — claim it before ${new Date(Number(genesisDeadline) * 1000).toISOString().slice(0, 10)} (first 7 days after deploy).`
-      : "Genesis window has closed — the badge can never be claimed again.";
+      ? t("genesisOpen", { date: new Date(Number(genesisDeadline) * 1000).toISOString().slice(0, 10) })
+      : t("genesisClosed");
   } catch (e) {
     console.warn("loadSpecialBadges failed:", e.message);
   }
@@ -262,13 +264,13 @@ async function loadSeason() {
     const active = now < SEASON_END_TS;
     const endDate = new Date(SEASON_END_TS * 1000).toISOString().slice(0, 16).replace("T", " ");
     $("seasonStatus").textContent = active
-      ? `Season 1 is live — ends ${endDate} UTC (${Math.max(0, Math.ceil((SEASON_END_TS - now) / 86400))} days left).`
-      : `Season 1 ended ${endDate} UTC — final standings below.`;
+      ? t("seasonLive", { end: endDate, days: Math.max(0, Math.ceil((SEASON_END_TS - now) / 86400)) })
+      : t("seasonEnded", { end: endDate });
     const top3 = await contract.seasonTop3();
     $("seasonTop3").innerHTML = top3[0].map((a, i) => {
       const best = Number(top3[1][i]);
       return best > 0
-        ? `<li>#${i + 1} <span class="addr">${shortAddr(a)}</span><span class="num">${best}-day streak</span></li>`
+        ? `<li>#${i + 1} <span class="addr">${shortAddr(a)}</span><span class="num">${t("top3Streak", { best })}</span></li>`
         : `<li>#${i + 1} <span class="muted">—</span></li>`;
     }).join("");
     if (userAddress) {
@@ -280,7 +282,7 @@ async function loadSeason() {
     }
   } catch (e) {
     console.warn("loadSeason failed:", e.message);
-    $("seasonTop3").innerHTML = `<li class="muted">Could not load season standings.</li>`;
+    $("seasonTop3").innerHTML = `<li class="muted">${t("loadSeasonFail")}</li>`;
   }
 }
 
@@ -303,13 +305,14 @@ async function loadMyStreak() {
     const btn = $("checkInBtn");
     btn.disabled = !can;
     $("checkInMsg").textContent = can
-      ? "You have not checked in today yet."
-      : "Already checked in today — come back tomorrow.";
+      ? t("checkInNotYet")
+      : t("checkInDone");
 
     const referred = await contract.referredBy(userAddress);
     if (referred !== ethers.ZeroAddress) {
+      myReferredAddr = referred;
       $("referrerLine").classList.remove("hidden");
-      $("referrerLine").textContent = `You were invited by ${shortAddr(referred)}.`;
+      $("referrerLine").textContent = t("invitedBy", { addr: shortAddr(referred) });
     }
 
     const claimed = {};
@@ -328,17 +331,17 @@ async function checkIn() {
   const btn = $("checkInBtn");
   try {
     btn.disabled = true;
-    $("checkInMsg").textContent = "Confirm the transaction in your wallet…";
+    $("checkInMsg").textContent = t("checkInConfirm");
     const c = contract.connect(userSigner);
     const tx = await c.checkIn(myReferrer);
-    $("checkInMsg").textContent = `Transaction sent: ${tx.hash} — waiting for confirmation…`;
+    $("checkInMsg").textContent = t("checkInSent", { hash: tx.hash });
     await tx.wait();
-    $("checkInMsg").textContent = "Checked in! 🔥 See you tomorrow.";
+    $("checkInMsg").textContent = t("checkInSuccess");
     await loadMyStreak();
     await loadStats();
     await loadLeaderboardAndRecent();
   } catch (e) {
-    $("checkInMsg").textContent = "Check-in failed: " + (e.reason || e.message);
+    $("checkInMsg").textContent = t("checkInFailed", { err: e.reason || e.message });
     btn.disabled = false;
   }
 }
@@ -348,11 +351,11 @@ async function claimBadge(milestone) {
     const c = contract.connect(userSigner);
     const tx = await c.claimBadge(milestone);
     await tx.wait();
-    alert(`Badge claimed! ${milestone}-day badge is now in your wallet (soulbound).`);
+    alert(t("badgeClaimedAlert", { days: milestone }));
     await loadMyStreak();
     await loadStats();
   } catch (e) {
-    alert("Claim failed: " + (e.reason || e.message));
+    alert(t("claimFailed", { err: e.reason || e.message }));
   }
 }
 
@@ -363,11 +366,11 @@ async function claimSpecial(kind) {
     const c = contract.connect(userSigner);
     const tx = await c[fn]();
     await tx.wait();
-    alert(`${label} badge claimed! It is now in your wallet (soulbound).`);
+    alert(t("specialClaimedAlert", { label }));
     await loadMyStreak();
     await loadStats();
   } catch (e) {
-    alert("Claim failed: " + (e.reason || e.message));
+    alert(t("claimFailed", { err: e.reason || e.message }));
   }
 }
 
@@ -375,25 +378,25 @@ async function connectWallet() {
   const btn = $("connectBtn");
   try {
     if (!window.ethereum) {
-      alert("No wallet found in this browser. Install a wallet extension first.");
+      alert(t("noWallet"));
       return;
     }
     btn.disabled = true;
-    btn.textContent = "Connecting…";
+    btn.textContent = t("connecting");
     const browserProvider = new ethers.BrowserProvider(window.ethereum);
     const network = await browserProvider.getNetwork();
     if (Number(network.chainId) !== CHAIN_ID) {
-      alert("Please switch your wallet to BNB Chain (chain ID 56) and try again.");
+      alert(t("wrongChain"));
       btn.disabled = false;
-      btn.textContent = "Connect wallet";
+      btn.textContent = t("connectWallet");
       return;
     }
     const accounts = await browserProvider.send("eth_requestAccounts", []);
     userAddress = ethers.getAddress(accounts[0]);
     userSigner = await browserProvider.getSigner();
     $("walletLine").classList.remove("hidden");
-    $("walletLine").textContent = `Connected: ${userAddress}`;
-    btn.textContent = "Connected ✓";
+    $("walletLine").textContent = t("connectedPrefix") + userAddress;
+    btn.textContent = t("connected");
     btn.disabled = true;
 
     // Referrer from ?ref= : only valid if it is not me and it already checked in.
@@ -421,36 +424,39 @@ async function connectWallet() {
     );
     const bal = await registry.balanceOf(userAddress);
     if (bal === 0n) {
-      $("myStreakEmpty").textContent =
-        "This wallet does not hold a Binance Agent ID yet — check-ins are for Agent ID holders only.";
+      noAgentId = true;
+      $("myStreakEmpty").textContent = t("myStreakNoAgent");
       renderBadges(0, {});
       return;
     }
+    noAgentId = false;
     await loadMyStreak();
   } catch (e) {
-    alert("Connection failed: " + (e.reason || e.message));
+    alert(t("connectFailed", { err: e.reason || e.message }));
     btn.disabled = false;
-    btn.textContent = "Connect wallet";
+    btn.textContent = t("connectWallet");
   }
 }
 
 async function init() {
+  $("connectBtn").textContent = t("connectWallet");
+  $("copyInviteBtn").textContent = t("copy");
   renderBadges(0, {});
   $("checkInBtn").addEventListener("click", checkIn);
   $("connectBtn").addEventListener("click", connectWallet);
   $("copyInviteBtn").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText($("inviteLink").textContent);
-      $("copyInviteBtn").textContent = "Copied ✓";
-      setTimeout(() => { $("copyInviteBtn").textContent = "Copy"; }, 2000);
+      $("copyInviteBtn").textContent = t("copied");
+      setTimeout(() => { $("copyInviteBtn").textContent = t("copy"); }, 2000);
     } catch (e) {
-      alert("Copy failed — select the link manually.");
+      alert(t("copyFailed"));
     }
   });
 
   if (CONTRACT_ADDRESS === ethers.ZeroAddress) {
     $("deployBanner").classList.remove("hidden");
-    $("contractLink").textContent = "not deployed yet";
+    $("contractLink").textContent = t("notDeployed");
     return;
   }
   $("contractLink").textContent = shortAddr(CONTRACT_ADDRESS);
@@ -464,13 +470,41 @@ async function init() {
     await loadTopReferrers();
     await loadSeason();
     renderSpecialBadges({}, {}, false);
-    $("genesisNote").textContent = "Connect your wallet to see if your Genesis window is still open.";
+    $("genesisNote").textContent = t("genesisConnect");
   } catch (e) {
     console.warn("init failed:", e.message);
-    $("leaderboard").innerHTML = `<li class="muted">Could not reach the chain — please reload.</li>`;
-    $("recentList").innerHTML = `<li class="muted">Could not reach the chain — please reload.</li>`;
-    $("topReferrers").innerHTML = `<li class="muted">Could not reach the chain — please reload.</li>`;
+    $("leaderboard").innerHTML = `<li class="muted">${t("loadChainFail")}</li>`;
+    $("recentList").innerHTML = `<li class="muted">${t("loadChainFail")}</li>`;
+    $("topReferrers").innerHTML = `<li class="muted">${t("loadChainFail")}</li>`;
   }
 }
+
+// Re-render dynamic (JS-set) strings when the language changes.
+// Static strings are handled by i18n.js applyI18n() before this event.
+document.addEventListener("flameid-lang", () => {
+  $("connectBtn").textContent = userAddress ? t("connected") : t("connectWallet");
+  if (!$("inviteBox").classList.contains("hidden")) $("copyInviteBtn").textContent = t("copy");
+  if (!userAddress) {
+    $("myStreakEmpty").textContent = t("myStreakEmpty");
+    $("genesisNote").textContent = t("genesisConnect");
+  } else if (noAgentId) {
+    $("myStreakEmpty").textContent = t("myStreakNoAgent");
+  }
+  if (myReferredAddr) {
+    $("referrerLine").textContent = t("invitedBy", { addr: shortAddr(myReferredAddr) });
+  }
+  if (contract) {
+    loadStats();
+    loadLeaderboardAndRecent();
+    loadTopReferrers();
+    loadSeason();
+    if (userAddress && !noAgentId) {
+      loadMyStreak();
+    } else {
+      renderBadges(0, {});
+      renderSpecialBadges({}, {}, false);
+    }
+  }
+});
 
 init();

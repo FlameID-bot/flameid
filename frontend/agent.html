@@ -8,56 +8,77 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/webp" href="logo.webp">
 <style>
-  .profile-flame { font-size: 72px; line-height: 1; }
-  .profile-name { font-size: 1.8em; font-weight: 800; margin: 8px 0 2px; word-break: break-all; }
-  .profile-addr { color: #9aa0b5; font-size: 0.9em; word-break: break-all; }
+  .profile-name { font-size: 1.9em; font-weight: 800; margin: 10px 0 2px; word-break: break-all; }
+  .profile-addr { color: #a2a8bf; font-size: 0.9em; word-break: break-all; }
   .badge-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-  .badge-chip { border: 1px solid #2a2f45; border-radius: 999px; padding: 6px 12px; font-size: 0.9em; font-weight: 700; }
-  .badge-chip.earned { border-color: #ffb347; color: #ffb347; }
-  .badge-chip.locked { color: #9aa0b5; opacity: 0.6; }
-  .share-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  .badge-chip {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 0.9em;
+    font-weight: 700;
+  }
+  .badge-chip.earned { border-color: rgba(255, 179, 71, 0.45); color: #ffb347; box-shadow: 0 0 14px rgba(255, 179, 71, 0.18); }
+  .badge-chip.locked { color: #a2a8bf; opacity: 0.6; }
+  .share-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <a class="nav-brand" href="./"><img src="logo.webp" alt="FlameID" class="nav-logo"><span>Flame<span class="grad">ID</span></span></a>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="vi">VI</button>
+    <button type="button" class="lang-btn" data-lang="zh">中文</button>
+    <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+    <button type="button" class="lang-btn" data-lang="ja">日本語</button>
+  </div>
+</nav>
+
 <header class="hero">
+  <div class="hero-embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
-    <div class="profile-flame">🔥</div>
-    <div class="profile-name" id="profileName">Loading…</div>
+    <img src="logo.webp" alt="FlameID logo" class="logo">
+    <div class="profile-name" id="profileName" data-i18n="loading">Loading…</div>
     <div class="profile-addr" id="profileAddr"></div>
   </div>
 </header>
 
 <main>
   <section class="card" id="profileCard">
-    <div class="streak-big"><span id="pStreak">–</span><span class="streak-unit">day streak 🔥</span></div>
+    <div class="streak-big"><span id="pStreak">–</span><span class="streak-unit" data-i18n="dayStreak">day streak 🔥</span></div>
     <div class="streak-grid">
-      <div><div class="mini-num" id="pLongest">–</div><div class="mini-label">Longest streak</div></div>
-      <div><div class="mini-num" id="pTotal">–</div><div class="mini-label">Total check-ins</div></div>
-      <div><div class="mini-num" id="pScore">–</div><div class="mini-label">Reputation score (max 140)</div></div>
-      <div><div class="mini-num" id="pShields">–</div><div class="mini-label">Streak shields 🛡️</div></div>
-      <div><div class="mini-num" id="pReferrals">–</div><div class="mini-label">Friends invited (qualified)</div></div>
-      <div><div class="mini-num" id="pSeasonBest">–</div><div class="mini-label">Best Season 1 streak</div></div>
+      <div><div class="mini-num" id="pLongest">–</div><div class="mini-label" data-i18n="longestStreak">Longest streak</div></div>
+      <div><div class="mini-num" id="pTotal">–</div><div class="mini-label" data-i18n="totalCheckIns">Total check-ins</div></div>
+      <div><div class="mini-num" id="pScore">–</div><div class="mini-label" data-i18n="score">Reputation score (max 140)</div></div>
+      <div><div class="mini-num" id="pShields">–</div><div class="mini-label" data-i18n="shields">Streak shields 🛡️</div></div>
+      <div><div class="mini-num" id="pReferrals">–</div><div class="mini-label" data-i18n="profileFriends">Friends invited (qualified)</div></div>
+      <div><div class="mini-num" id="pSeasonBest">–</div><div class="mini-label" data-i18n="profileSeasonBest">Best Season 1 streak</div></div>
     </div>
-    <h3>Badges</h3>
-    <div class="badge-list" id="pBadges"><span class="muted">Loading…</span></div>
+    <h3 data-i18n="profileBadges">Badges</h3>
+    <div class="badge-list" id="pBadges"><span class="muted" data-i18n="loading">Loading…</span></div>
     <p id="pError" class="muted small"></p>
     <div class="share-row">
-      <button id="shareXBtn" class="btn-primary" disabled>Share on X</button>
-      <a id="homeLink" class="btn-secondary" href="./">Start your own streak →</a>
+      <button id="shareXBtn" class="btn-primary" data-i18n="shareX" disabled>Share on X</button>
+      <a id="homeLink" class="btn-secondary" href="./" data-i18n="startStreak">Start your own streak →</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>Contract: <a id="contractLink" href="#" target="_blank" rel="noopener">not deployed yet</a> (BNB Chain)</p>
-  <p><a href="agent.md">For AI agents: agent.md</a></p>
+  <p><span data-i18n="footerContract">Contract:</span> <a id="contractLink" href="#" target="_blank" rel="noopener">not deployed yet</a> (BNB Chain)</p>
+  <p><a href="agent.md" data-i18n="footerAgents">For AI agents: agent.md</a> · <span data-i18n="footerSource">Source code:</span> <a href="https://github.com/FlameID-bot/flameid" target="_blank" rel="noopener">FlameID-bot/flameid</a> · <a href="https://x.com/FlameIDOfficial" target="_blank" rel="noopener">@FlameIDOfficial</a></p>
+  <p class="footer-tag" data-i18n="footerTagline">Keep the fire alive.</p>
 </footer>
 
 <script src="vendor/ethers.umd.min.js"></script>
 <script src="abi.js"></script>
+<script src="i18n.js"></script>
 <script>
 // Profile page: /agent/<name.ai> (via 404.html redirect) or agent.html?name=<name.ai>
 // and agent.html?a=<wallet address>. Read-only — no wallet connection needed.
+const CONTRACT_ADDRESS = "0xa68B69AF101E4262F651119c9830BfBd1603EC97";
 const REGISTRY_ADDRESS = "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F";
 const REGISTRY_ABI = ["function ownerOf(uint256 tokenId) view returns (address)"];
 const BSCSCAN = "https://bscscan.com";
@@ -65,6 +86,35 @@ const MILESTONES = [7, 14, 30, 60, 100];
 const SPECIAL = [[1, "Genesis"], [2, "Survivor"], [3, "Champion"]];
 
 const $ = (id) => document.getElementById(id);
+
+// Last loaded profile data, kept so the share text and badge chips can be
+// re-rendered in the newly chosen language without re-reading the chain.
+let lastProfile = null;
+
+function buildShareText() {
+  if (!lastProfile) return "";
+  return t("shareText", {
+    name: lastProfile.displayName,
+    streak: lastProfile.streak,
+    score: lastProfile.score,
+    badges: lastProfile.earned,
+    url: location.href,
+  });
+}
+
+function renderChips() {
+  if (!lastProfile) return;
+  const chips = [];
+  for (const days of MILESTONES) {
+    const has = lastProfile.badges[days];
+    chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${t("daysBadge", { days })}</span>`);
+  }
+  for (const [kind, label] of SPECIAL) {
+    const has = lastProfile.special[kind];
+    chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${label}</span>`);
+  }
+  $("pBadges").innerHTML = chips.join("");
+}
 
 async function pickWorkingProvider() {
   const urls = [
@@ -92,8 +142,8 @@ async function main() {
   let name = params.get("name") || "";
   let addr = params.get("a") || "";
   if (!name && !addr) {
-    $("profileName").textContent = "No profile given";
-    $("pError").textContent = "Open a profile as /agent/<name.ai> or agent.html?a=<wallet address>.";
+    $("profileName").textContent = t("profileNoProfile");
+    $("pError").textContent = t("profileHowTo");
     return;
   }
   if (name) {
@@ -102,7 +152,7 @@ async function main() {
     document.title = `${name}.ai — FlameID`;
   }
   if (CONTRACT_ADDRESS === ethers.ZeroAddress) {
-    $("pError").textContent = "Contract not deployed yet — profile data will appear after launch.";
+    $("pError").textContent = t("profileNotDeployed");
     return;
   }
   $("contractLink").textContent = CONTRACT_ADDRESS.slice(0, 10) + "…" + CONTRACT_ADDRESS.slice(-4);
@@ -116,7 +166,7 @@ async function main() {
       const tokenId = ethers.keccak256(ethers.toUtf8Bytes(name));
       addr = await registry.ownerOf(tokenId);
     }
-    if (addr === ethers.ZeroAddress) throw new Error("Agent ID has no owner");
+    if (addr === ethers.ZeroAddress) throw new Error(t("profileNoOwner"));
     $("profileAddr").textContent = addr;
     const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
     const [streak, score, shields, referrals, season] = await Promise.all([
@@ -134,29 +184,39 @@ async function main() {
     $("pReferrals").textContent = Number(referrals);
     $("pSeasonBest").textContent = Number(season[2]);
 
-    const chips = [];
+    const badges = {};
     for (const days of MILESTONES) {
-      const has = await contract.hasBadge(addr, days);
-      chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${days}-day</span>`);
+      badges[days] = await contract.hasBadge(addr, days);
     }
-    for (const [kind, label] of SPECIAL) {
-      const has = await contract.hasSpecialBadge(addr, kind);
-      chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${label}</span>`);
+    const special = {};
+    for (const [kind] of SPECIAL) {
+      special[kind] = await contract.hasSpecialBadge(addr, kind);
     }
-    $("pBadges").innerHTML = chips.join("");
-    const earned = chips.filter((c) => c.includes("earned")).length;
-
+    const earned = Object.values(badges).filter(Boolean).length + Object.values(special).filter(Boolean).length;
     const displayName = name ? name + ".ai" : addr.slice(0, 10) + "…";
-    const shareText = `🔥 ${displayName} is on a ${Number(streak[0])}-day streak on FlameID — score ${Number(score)}/140, ${earned} badges. One check-in a day, no fees, no token. ${location.href}`;
+    lastProfile = {
+      displayName,
+      streak: Number(streak[0]),
+      score: Number(score),
+      earned,
+      badges,
+      special,
+    };
+    renderChips();
+
     $("shareXBtn").disabled = false;
     $("shareXBtn").addEventListener("click", () => {
-      window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText), "_blank", "noopener");
+      window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(buildShareText()), "_blank", "noopener");
     });
   } catch (e) {
     console.warn("profile load failed:", e.message);
-    $("pError").textContent = "Could not load this profile: " + (e.reason || e.message);
+    $("pError").textContent = t("profileLoadFail", { err: e.reason || e.message });
   }
 }
+
+document.addEventListener("flameid-lang", () => {
+  renderChips();
+});
 
 main();
 </script>

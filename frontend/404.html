@@ -3,16 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page not found — FlameID</title>
+<title data-i18n="notFoundTitle">Page not found — FlameID</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/webp" href="logo.webp">
 </head>
 <body>
-<main style="padding-top: 60px; text-align: center;">
-  <h1>Page not found</h1>
-  <p class="muted">Redirecting…</p>
-  <p><a href="./">Go to the homepage →</a></p>
+<nav class="topnav">
+  <a class="nav-brand" href="./"><img src="logo.webp" alt="FlameID" class="nav-logo"><span>Flame<span class="grad">ID</span></span></a>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="vi">VI</button>
+    <button type="button" class="lang-btn" data-lang="zh">中文</button>
+    <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+    <button type="button" class="lang-btn" data-lang="ja">日本語</button>
+  </div>
+</nav>
+<main class="notfound">
+  <img src="logo.webp" alt="FlameID logo" class="logo">
+  <h1 data-i18n="notFoundTitle">Page not found</h1>
+  <p class="muted" data-i18n="redirecting">Redirecting…</p>
+  <p><a href="./" data-i18n="goHome">Go to the homepage →</a></p>
 </main>
+<script src="i18n.js"></script>
 <script>
 // GitHub Pages serves this file for any unknown path, including
 // /agent/<name.ai> profile links. Redirect those to the profile page
