@@ -460,3 +460,207 @@ footer p { margin: 5px 0; }
   .invite-link { flex-wrap: wrap; }
   .topnav { padding: 10px 14px; gap: 10px; }
 }
+
+/* ---------- Redesign 2026-11-25: richer premium fire look + icons ----------
+   Inline SVG icons (no external icon CDN). Icons sit as siblings of
+   data-i18n elements, never inside them, so applyI18n() textContent
+   swaps can never wipe them. No new i18n keys were added; all visuals
+   are language-neutral (numerals / icons only). */
+
+/* Base icon size for inline SVGs */
+.ico { width: 1.15em; height: 1.15em; vertical-align: -0.18em; }
+
+/* ---------- Section headings with icon tiles ---------- */
+.sec-head { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; }
+.sec-head h2 { margin: 0; flex: 1; }
+.sec-ico {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  color: var(--gold);
+  background: linear-gradient(160deg, rgba(255, 179, 71, 0.18), rgba(255, 107, 53, 0.1));
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 16px rgba(255, 107, 53, 0.22);
+}
+.sec-ico .ico { width: 22px; height: 22px; }
+
+/* ---------- Stat icons ---------- */
+.stat-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgba(255, 179, 71, 0.1);
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  box-shadow: 0 0 14px rgba(255, 179, 71, 0.14);
+}
+.stat-icon .ico { width: 22px; height: 22px; }
+
+/* ---------- Hero upgrades ---------- */
+.logo-float { animation: logoFloat 5s ease-in-out infinite; }
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.hero-embers i:nth-child(7) { left: 5%; animation-delay: 5.2s; width: 4px; height: 4px; }
+.hero-embers i:nth-child(8) { left: 34%; animation-delay: 0.5s; width: 3px; height: 3px; }
+.hero-embers i:nth-child(9) { left: 55%; animation-delay: 6s; }
+.hero-embers i:nth-child(10) { left: 94%; animation-delay: 2.2s; width: 4px; height: 4px; }
+
+/* Prize-pool teaser chip under the hero pills (links to #giveaway) */
+.hero-prize {
+  display: flex; width: fit-content;
+  align-items: center; gap: 8px;
+  margin: 0 auto 22px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  color: #ffe9b0;
+  font-weight: 800;
+  background: rgba(255, 179, 71, 0.14);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 22px rgba(255, 179, 71, 0.25);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hero-prize:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(255, 179, 71, 0.4); text-decoration: none; }
+.hero-prize-ico { display: inline-flex; color: var(--gold); }
+.hero-prize-ico .ico { width: 20px; height: 20px; }
+.hero-prize-amt { font-size: 1.05em; letter-spacing: 0.3px; }
+.hero-prize-sep { color: var(--amber); }
+
+/* ---------- Buttons: icon via CSS (JS replaces button textContent) ---------- */
+#connectBtn::before, #checkInBtn::before {
+  content: "";
+  display: inline-block;
+  width: 18px; height: 18px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#connectBtn::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1005' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='1' y='4' width='22' height='16' rx='2'/%3E%3Cpath d='M1 10h22'/%3E%3C/svg%3E"); }
+#checkInBtn::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1005' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z'/%3E%3C/svg%3E"); }
+
+/* ---------- Badge cards: medal watermark (JS-rendered, CSS-only) ---------- */
+.badge { position: relative; }
+.badge::before {
+  content: "";
+  position: absolute;
+  top: 10px; right: 12px;
+  width: 24px; height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f7c948' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='14' r='6'/%3E%3Cpath d='M12 11.8l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 13.6l2-.3z'/%3E%3Cpath d='M8.8 8.8L7 3h3.5M15.2 8.8L17 3h-3.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.badge.earned::before { opacity: 1; filter: drop-shadow(0 0 6px rgba(247, 201, 72, 0.6)); }
+
+/* ---------- Leaderboard / top-3: gold / silver / bronze rows ---------- */
+.rank-list li:nth-child(1) { border-color: rgba(247, 201, 72, 0.65); background: linear-gradient(90deg, rgba(247, 201, 72, 0.16), rgba(255, 255, 255, 0.02)); }
+.rank-list li:nth-child(2) { border-color: rgba(215, 220, 230, 0.4); background: linear-gradient(90deg, rgba(215, 220, 230, 0.09), rgba(255, 255, 255, 0.02)); }
+.rank-list li:nth-child(3) { border-color: rgba(224, 160, 106, 0.45); background: linear-gradient(90deg, rgba(224, 160, 106, 0.12), rgba(255, 255, 255, 0.02)); }
+
+/* ---------- Giveaway: prize-pool highlight ---------- */
+.giveaway {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--border-gold);
+  background: linear-gradient(180deg, rgba(255, 179, 71, 0.12), rgba(255, 255, 255, 0.02));
+  animation: giveawayGlow 3.6s ease-in-out infinite;
+}
+@keyframes giveawayGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.15), 0 12px 40px rgba(255, 107, 53, 0.14); }
+  50% { box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.35), 0 12px 48px rgba(255, 107, 53, 0.3); }
+}
+.giveaway::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  left: -80px;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+  transform: skewX(-18deg);
+  animation: sweep 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes sweep { 0%, 55% { left: -80px; } 90%, 100% { left: 110%; } }
+
+.prize-display { position: relative; text-align: center; padding: 8px 0 4px; margin: 4px 0; }
+.prize-amount { display: flex; align-items: baseline; justify-content: center; gap: 10px; }
+.prize-num {
+  font-size: clamp(3.2em, 12vw, 4.6em);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  background: linear-gradient(100deg, #ff6b35, #ffb347 30%, #fff3c4 50%, #f7c948 70%, #ff6b35);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine { to { background-position: 200% 0; } }
+.prize-cur { font-size: 1.5em; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+.prize-plus {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px;
+  font-weight: 800; color: #1a1005;
+  background: var(--grad);
+  border-radius: 999px; padding: 5px 14px;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.45);
+}
+.prize-plus .ico { width: 16px; height: 16px; }
+.prize-coin { position: absolute; top: 4px; color: rgba(247, 201, 72, 0.75); animation: coinFloat 3.4s ease-in-out infinite; }
+.prize-coin .ico { width: 30px; height: 30px; }
+.coin-a { left: 5%; }
+.coin-b { right: 5%; animation-delay: 1.2s; }
+.coin-b .ico { width: 22px; height: 22px; }
+@keyframes coinFloat { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-10px) rotate(8deg); } }
+
+/* Podium: top 3 prize split (numerals only — language-neutral) */
+.podium { display: flex; gap: 10px; align-items: flex-end; justify-content: center; margin: 18px 0 6px; }
+.podium-col {
+  flex: 1; max-width: 180px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 8px 8px;
+  padding: 14px 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease;
+}
+.podium-col:hover { transform: translateY(-3px); }
+.podium-col.gold {
+  border-color: rgba(247, 201, 72, 0.7);
+  background: linear-gradient(180deg, rgba(247, 201, 72, 0.16), rgba(255, 255, 255, 0.02));
+  padding-top: 20px;
+  box-shadow: 0 0 26px rgba(247, 201, 72, 0.2);
+}
+.podium-col.silver { border-color: rgba(215, 220, 230, 0.4); background: linear-gradient(180deg, rgba(215, 220, 230, 0.08), rgba(255, 255, 255, 0.02)); }
+.podium-col.bronze { border-color: rgba(224, 160, 106, 0.5); background: linear-gradient(180deg, rgba(224, 160, 106, 0.1), rgba(255, 255, 255, 0.02)); }
+.podium-medal { width: 34px; height: 34px; color: var(--gold); }
+.podium-col.silver .podium-medal { color: #d7dce6; }
+.podium-col.bronze .podium-medal { color: #e0a06a; }
+.podium-medal .ico { width: 100%; height: 100%; }
+.podium-rank { font-weight: 900; font-size: 1.25em; }
+.podium-col.gold .podium-rank { color: var(--gold); }
+.podium-amt { font-weight: 800; color: var(--amber); }
+.podium-rest { text-align: center; color: var(--muted); font-size: 0.88em; margin: 4px 0 0; }
+
+/* Anchor offset under the sticky nav */
+section[id] { scroll-margin-top: 72px; }
+
+/* ---------- Mobile tweaks for the redesign ---------- */
+@media (max-width: 640px) {
+  .prize-coin { display: none; }
+  .podium { gap: 6px; }
+  .podium-medal { width: 28px; height: 28px; }
+  .sec-ico { width: 34px; height: 34px; }
+  .sec-ico .ico { width: 19px; height: 19px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
