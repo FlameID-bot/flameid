@@ -27,9 +27,9 @@
 </nav>
 
 <header class="hero">
-  <div class="hero-embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
-    <img src="logo.webp" alt="FlameID logo" class="logo logo-float">
+    <img src="logo.webp" alt="FlameID logo" class="logo">
     <h1>Flame<span class="grad">ID</span></h1>
     <p class="tagline" data-i18n="heroTagline">Check in once a day. Keep the fire alive. Earn badges no one can take from you.</p>
     <p class="sub" data-i18n="heroSub">Built for Binance Agent ID holders — every check-in is verified on-chain, no sign-ups, no fees, no admin.</p>
@@ -38,13 +38,6 @@
       <span class="pill" data-i18n="heroPill2">Soulbound</span>
       <span class="pill" data-i18n="heroPill3">100% on-chain</span>
     </div>
-    <a class="hero-prize" href="#giveaway" title="See the giveaway">
-      <span class="hero-prize-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
-      <span class="hero-prize-amt">50 USDT</span>
-      <span class="hero-prize-sep" aria-hidden="true">·</span>
-      <span class="hero-prize-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6 5.6 1.4-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
-      <span class="hero-prize-amt">+20%</span>
-    </a>
     <button id="connectBtn" class="btn-primary">Connect wallet</button>
     <p id="walletLine" class="wallet-line hidden"></p>
   </div>
@@ -56,14 +49,14 @@
   </section>
 
   <section class="stats">
-    <div class="stat"><div class="stat-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="stat-num" id="statStreakers">–</div><div class="stat-label" data-i18n="statStreakers">Streakers</div></div>
-    <div class="stat"><div class="stat-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></div><div class="stat-num" id="statCheckIns">–</div><div class="stat-label" data-i18n="statCheckIns">Total check-ins</div></div>
-    <div class="stat"><div class="stat-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M12 11.8l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 13.6l2-.3z"/><path d="M8.8 8.8L7 3h3.5M15.2 8.8L17 3h-3.5"/></svg></div><div class="stat-num" id="statBadges">–</div><div class="stat-label" data-i18n="statBadges">Badges claimed</div></div>
-    <div class="stat"><div class="stat-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5a1 1 0 0 0-1 .9C3.5 8.9 5 10.5 7 10.7M17 6h2.5a1 1 0 0 1 1 .9c0 2-1.5 3.6-3.5 3.8"/></svg></div><div class="stat-num" id="statTopStreak">–</div><div class="stat-label" data-i18n="statTopStreak">Longest streak</div></div>
+    <div class="stat"><div class="stat-num" id="statStreakers">–</div><div class="stat-label" data-i18n="statStreakers">Streakers</div></div>
+    <div class="stat"><div class="stat-num" id="statCheckIns">–</div><div class="stat-label" data-i18n="statCheckIns">Total check-ins</div></div>
+    <div class="stat"><div class="stat-num" id="statBadges">–</div><div class="stat-label" data-i18n="statBadges">Badges claimed</div></div>
+    <div class="stat"><div class="stat-num" id="statTopStreak">–</div><div class="stat-label" data-i18n="statTopStreak">Longest streak</div></div>
   </section>
 
   <section id="myStreak" class="card">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><h2 data-i18n="myStreakTitle">My streak</h2></div>
+    <h2 class="ic-flame" data-i18n="myStreakTitle">My streak</h2>
     <p id="myStreakEmpty" class="muted" data-i18n="myStreakEmpty">Connect your Agent ID wallet to see your streak.</p>
     <div id="myStreakBody" class="hidden">
       <div class="streak-big"><span id="myCurrent">0</span><span class="streak-unit" data-i18n="dayStreak">day streak 🔥</span></div>
@@ -83,14 +76,14 @@
   </section>
 
   <section class="card" id="special">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6 5.6 1.4-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span><h2 data-i18n="specialTitle">Special badges</h2></div>
+    <h2 class="ic-medal" data-i18n="specialTitle">Special badges</h2>
     <p class="muted" data-i18n="specialDesc">One-off badges for the first week and for Season 1. Same rules as milestone badges: soulbound, on-chain art, free to claim — only gas.</p>
     <p id="genesisNote" class="muted small" data-i18n="genesisLoading">Loading Genesis window…</p>
     <div id="specialGrid" class="badge-grid"></div>
   </section>
 
   <section class="card" id="season">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5a1 1 0 0 0-1 .9C3.5 8.9 5 10.5 7 10.7M17 6h2.5a1 1 0 0 1 1 .9c0 2-1.5 3.6-3.5 3.8"/></svg></span><h2 data-i18n="seasonTitle">Season 1 — 14 days, ends 09 Dec 2026, 08:00 UTC</h2></div>
+    <h2 class="ic-trophy" data-i18n="seasonTitle">Season 1 — 14 days, ends 09 Dec 2026, 08:00 UTC</h2>
     <p id="seasonStatus" class="muted" data-i18n="seasonLoading">Loading season…</p>
     <div class="streak-grid">
       <div><div class="mini-num" id="mySeasonDays">–</div><div class="mini-label" data-i18n="seasonDays">Days checked in (season)</div></div>
@@ -104,13 +97,13 @@
   </section>
 
   <section class="card" id="badges">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M12 11.8l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 13.6l2-.3z"/><path d="M8.8 8.8L7 3h3.5M15.2 8.8L17 3h-3.5"/></svg></span><h2 data-i18n="badgesTitle">Badges</h2></div>
+    <h2 class="ic-star" data-i18n="badgesTitle">Badges</h2>
     <p class="muted" data-i18n="badgesDesc">Reach a milestone streak and claim its badge — a soulbound NFT with fully on-chain artwork. Badges can never be transferred or sold.</p>
     <div id="badgeGrid" class="badge-grid"></div>
   </section>
 
   <section class="card" id="invite">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><h2 data-i18n="inviteTitle">Invite friends, earn shields 🛡️</h2></div>
+    <h2 class="ic-shield" data-i18n="inviteTitle">Invite friends, earn shields</h2>
     <p class="muted" data-i18n="inviteDesc">Share your invite link. When a friend you invited reaches a 3-day streak, you earn one streak shield (max 3). A shield saves your streak if you miss exactly one day.</p>
     <div id="inviteBox" class="hidden">
       <div class="invite-link"><span id="inviteLink"></span><button id="copyInviteBtn" class="btn-secondary">Copy</button></div>
@@ -122,46 +115,25 @@
   </section>
 
   <section class="card">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><h2 data-i18n="leaderboardTitle">Leaderboard — longest current streaks</h2></div>
+    <h2 class="ic-list" data-i18n="leaderboardTitle">Leaderboard — longest current streaks</h2>
     <ol id="leaderboard" class="rank-list"><li class="muted" data-i18n="loading">Loading…</li></ol>
   </section>
 
   <section class="card">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><h2 data-i18n="recentTitle">Recent check-ins</h2></div>
+    <h2 class="ic-clock" data-i18n="recentTitle">Recent check-ins</h2>
     <ul id="recentList" class="recent-list"><li class="muted" data-i18n="loading">Loading…</li></ul>
   </section>
 
-  <!-- Giveaway terms (decided 2026-11-25, ranked by TRUST SCORE since 13:43): guaranteed 50 USDT pool (1st 15, 2nd 10, 3rd 8, 4th 5, 5th 4, 6th 3, 7th 2, 8th-10th 1 each) + 20% of the hackathon prize if the project wins.
-       Ranking uses the existing on-chain scoreOf() (max 140). No contract change.
+  <!-- Giveaway terms (decided 25/11, raised to 100 USDT 13:51): guaranteed 100 USDT pool (1st 30, 2nd 20, 3rd 15, 4th 10, 5th 8, 6th 6, 7th 4, 8th 3, 9th 2, 10th 2) + 20% of the hackathon prize if the project wins, ranked by on-chain trust score (max 140).
        This block is off-chain content only — nothing about the giveaway lives in the contract. -->
-  <section class="card giveaway" id="giveaway">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><h2 data-i18n="giveawayTitle">🎁 Giveaway</h2></div>
-    <div class="prize-display">
-      <span class="prize-coin coin-a" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M15.2 9.2c0-1.5-1.4-2.7-3.2-2.7s-3.2 1.2-3.2 2.7c0 3.8 6.4 1.9 6.4 5.6 0 1.5-1.4 2.7-3.2 2.7s-3.2-1.2-3.2-2.7"/></svg></span>
-      <span class="prize-coin coin-b" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M15.2 9.2c0-1.5-1.4-2.7-3.2-2.7s-3.2 1.2-3.2 2.7c0 3.8 6.4 1.9 6.4 5.6 0 1.5-1.4 2.7-3.2 2.7s-3.2-1.2-3.2-2.7"/></svg></span>
-      <div class="prize-amount"><span class="prize-num">50</span><span class="prize-cur">USDT</span></div>
-      <div class="prize-plus"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6 5.6 1.4-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg><span>+20%</span></div>
-    </div>
-    <p data-i18n-html="giveawayBody">A guaranteed <b>50 USDT prize pool</b> will be shared among the top 10 highest trust scores at the close of submissions — 09 December, 15:00 Bangkok time. If this project wins a prize in the hackathon, an extra <b>20% of the prize</b> goes on top.</p>
-    <div class="score-strip" aria-hidden="true">
-      <span class="score-chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>+50</span>
-      <span class="score-chip referral"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>+30</span>
-      <span class="score-chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg>+30</span>
-      <span class="score-chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>+20</span>
-      <span class="score-chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 11.5l2 2 4-4"/></svg>+10</span>
-      <span class="score-chip total"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5a1 1 0 0 0-1 .9C3.5 8.9 5 10.5 7 10.7M17 6h2.5a1 1 0 0 1 1 .9c0 2-1.5 3.6-3.5 3.8"/></svg>= 140</span>
-    </div>
-    <div class="podium" aria-hidden="true">
-      <div class="podium-col silver"><span class="podium-medal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M12 11.8l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 13.6l2-.3z"/><path d="M8.8 8.8L7 3h3.5M15.2 8.8L17 3h-3.5"/></svg></span><span class="podium-rank">#2</span><span class="podium-amt">10 USDT</span></div>
-      <div class="podium-col gold"><span class="podium-medal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5a1 1 0 0 0-1 .9C3.5 8.9 5 10.5 7 10.7M17 6h2.5a1 1 0 0 1 1 .9c0 2-1.5 3.6-3.5 3.8"/></svg></span><span class="podium-rank">#1</span><span class="podium-amt">15 USDT</span></div>
-      <div class="podium-col bronze"><span class="podium-medal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M12 11.8l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 13.6l2-.3z"/><path d="M8.8 8.8L7 3h3.5M15.2 8.8L17 3h-3.5"/></svg></span><span class="podium-rank">#3</span><span class="podium-amt">8 USDT</span></div>
-    </div>
-    <p class="podium-rest">#4 — 5 USDT · #5 — 4 USDT · #6 — 3 USDT · #7 — 2 USDT · #8–10 — 1 USDT</p>
-    <p class="muted small" data-i18n="giveawayNote">Split: 1st 15 USDT, 2nd 10, 3rd 8, 4th 5, 5th 4, 6th 3, 7th 2, 8th–10th 1 each. Scores are ranked by on-chain trust score (streak + qualified referrals + total check-ins + account age + shields, max 140) at that moment — the more you refer, the higher you rank. Winners will be contacted after the results are announced.</p>
+  <section class="card giveaway">
+    <h2 class="ic-gift" data-i18n="giveawayTitle">Giveaway</h2>
+    <p data-i18n-html="giveawayBody">A guaranteed <b>100 USDT prize pool</b> will be shared among the top 10 highest trust scores at the close of submissions — 09 December, 15:00 Bangkok time. If this project wins a prize in the hackathon, an extra <b>20% of the prize</b> goes on top.</p>
+    <p class="muted small" data-i18n="giveawayNote">Split: 1st 30 USDT, 2nd 20, 3rd 15, 4th 10, 5th 8, 6th 6, 7th 4, 8th 3, 9th 2, 10th 2. Scores are ranked by on-chain trust score (streak + qualified referrals + total check-ins + account age + shields, max 140) at that moment — the more you refer, the higher you rank. Winners will be contacted after the results are announced.</p>
   </section>
 
   <section class="card" id="how">
-    <div class="sec-head"><span class="sec-ico" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.8 2.8 0 1 1 3.9 2.6c-.9.4-1.2 1-1.2 1.9M12 17.5h.01"/></svg></span><h2 data-i18n="howTitle">How it works</h2></div>
+    <h2 class="ic-help" data-i18n="howTitle">How it works</h2>
     <ol class="how">
       <li data-i18n="how1">Connect your wallet — it must hold a Binance Agent ID.</li>
       <li data-i18n="how2">Check in once per UTC day. Check in two days in a row and your streak grows; miss a day and it resets (unless a shield saves it).</li>
