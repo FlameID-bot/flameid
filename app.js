@@ -258,23 +258,68 @@ async function loadLeaderboardAndRecent() {
 
 async function loadTopReferrers() {
   const el = $("topReferrers");
+  const myRefRankEl = $("myRefRank");
   try {
     const latest = await readProvider.getBlockNumber();
     const from = DEPLOY_BLOCK > 0 ? DEPLOY_BLOCK : Math.max(0, latest - 200000);
     const events = await getLogsChunked(contract.filters.ReferralRecorded(), from, latest);
-    const referrers = [...new Set(events.map((ev) => ev.args.referrer.toLowerCase()))];
-    const counts = await Promise.all(
-      referrers.map(async (r) => ({ addr: r, count: Number(await contract.referralCount(r)) }))
-    );
-    counts.sort((a, b) => b.count - a.count);
+    // Invites per referrer from events — includes not-yet-qualified ones
+    // (qualification needs the invitee to reach a 3-day streak, so on
+    // day 1 every qualified count is still 0).
+    const invited = new Map();
+    for (const ev of events) {
+      const r = ev.args.referrer.toLowerCase();
+      invited.set(r, (invited.get(r) || 0) + 1);
+    }
+    const referrers = [...invited.keys()];
+    const counts = [];
+    for (let i = 0; i < referrers.length; i += 5) {
+      const batch = await Promise.all(referrers.slice(i, i + 5).map(async (r) => ({
+        addr: r,
+        count: Number(await contract.referralCount(r)),
+        invited: invited.get(r) || 0,
+      })));
+      counts.push(...batch);
+    }
+    // Merge the connected wallet's LIVE counts so they appear right away.
+    let myQualified = 0;
+    let myInvited = 0;
+    if (userAddress) {
+      try {
+        const me = userAddress.toLowerCase();
+        myQualified = Number(await contract.referralCount(userAddress));
+        myInvited = invited.get(me) || 0;
+        if (myQualified > 0 || myInvited > 0) {
+          const i = counts.findIndex((r) => r.addr === me);
+          if (i >= 0) counts[i] = { addr: me, count: myQualified, invited: myInvited };
+          else counts.push({ addr: me, count: myQualified, invited: myInvited });
+        }
+      } catch (e) {
+        console.warn("live referrer merge failed:", e.message);
+      }
+    }
+    counts.sort((a, b) => b.count - a.count || b.invited - a.invited);
     el.innerHTML = counts.length
-      ? counts.slice(0, 10).map((r, i) =>
-          `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
-          `<span class="num">${r.count} ${t("qualified")}</span></li>`).join("")
+      ? counts.slice(0, 10).map((r, i) => {
+          const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
+          const pending = r.invited > r.count ? ` ${t("refPending", { n: r.invited - r.count })}` : "";
+          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+            `<span class="num">${r.count} ${t("qualified")}${pending}</span></li>`;
+        }).join("")
       : `<li class="muted">${t("noReferrals")}</li>`;
+    // Your referral rank among all referrers.
+    if (!userAddress) myRefRankEl.textContent = t("myRefRankNone");
+    else if (myQualified === 0 && myInvited === 0) myRefRankEl.textContent = t("myRefRankZero");
+    else {
+      const myIdx = counts.findIndex((r) => r.addr === userAddress.toLowerCase());
+      myRefRankEl.textContent = myIdx >= 0
+        ? t("myRefRank", { rank: myIdx + 1, count: counts[myIdx].count })
+        : t("myRefRankNone");
+    }
   } catch (e) {
     console.warn("loadTopReferrers failed:", e.message);
     el.innerHTML = `<li class="muted">${t("loadRefFail")}</li>`;
+    myRefRankEl.textContent = t("loadRefFail");
   }
 }
 
@@ -427,6 +472,7 @@ async function checkIn() {
     await loadMyStreak();
     await loadStats();
     await loadLeaderboardAndRecent();
+    await loadTopReferrers();
   } catch (e) {
     $("checkInMsg").textContent = t("checkInFailed", { err: e.reason || e.message });
     btn.disabled = false;
@@ -519,6 +565,7 @@ async function connectWallet() {
     noAgentId = false;
     await loadMyStreak();
     await loadLeaderboardAndRecent();
+    await loadTopReferrers();
   } catch (e) {
     alert(t("connectFailed", { err: e.reason || e.message }));
     btn.disabled = false;
