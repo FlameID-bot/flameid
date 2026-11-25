@@ -76,15 +76,36 @@ async function pickWorkingProvider() {
   throw new Error("No working BSC RPC");
 }
 
+let goodRpcIdx = 0;
+function contractOn(url) {
+  return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, makeProvider(url));
+}
+
+// One log window, tried on every RPC in turn: dataseed* answer
+// getBlockNumber but currently rate-limit eth_getLogs (-32005), so a
+// single-provider read comes back empty and the boards look blank.
+async function queryLogsFallback(filter, from, to) {
+  for (let k = 0; k < RPCS.length; k++) {
+    const idx = (goodRpcIdx + k) % RPCS.length;
+    try {
+      const logs = await contractOn(RPCS[idx]).queryFilter(filter, from, to);
+      goodRpcIdx = idx;
+      return logs;
+    } catch (e) {
+      console.warn(`getLogs ${from}-${to} failed on ${RPCS[idx]}:`, e.message);
+    }
+  }
+  throw new Error("All RPCs failed for getLogs");
+}
+
 async function getLogsChunked(filter, fromBlock, toBlock) {
   const out = [];
   for (let from = fromBlock; from <= toBlock; from += LOG_WINDOW) {
     const to = Math.min(from + LOG_WINDOW - 1, toBlock);
     try {
-      const logs = await contract.queryFilter(filter, from, to);
-      out.push(...logs);
+      out.push(...(await queryLogsFallback(filter, from, to)));
     } catch (e) {
-      console.warn(`getLogs ${from}-${to} failed:`, e.message);
+      console.warn(`getLogs ${from}-${to} failed on all RPCs, skipped`);
     }
   }
   return out;
@@ -143,12 +164,41 @@ async function loadLeaderboardAndRecent() {
     }));
     rows.sort((x, y) => y.effective - x.effective || y.longest - x.longest || y.total - x.total);
 
+    // Merge the connected wallet's LIVE on-chain state, so their row shows
+    // immediately after check-in — public RPCs can take minutes to index
+    // the new event, and without this the user never sees themselves.
+    let myTotal = 0;
+    if (userAddress) {
+      try {
+        const me = userAddress.toLowerCase();
+        const s = await contract.streakOf(userAddress);
+        myTotal = Number(s[2]);
+        if (myTotal > 0) {
+          const live = {
+            addr: me,
+            effective: Number(s[3]) >= today - 1 ? Number(s[0]) : 0,
+            longest: Number(s[1]),
+            total: myTotal,
+            lastDay: Number(s[3]),
+          };
+          const i = rows.findIndex((r) => r.addr === me);
+          if (i >= 0) rows[i] = { ...rows[i], ...live };
+          else rows.push(live);
+          rows.sort((x, y) => y.effective - x.effective || y.longest - x.longest || y.total - x.total);
+        }
+      } catch (e) {
+        console.warn("live user merge failed:", e.message);
+      }
+    }
+
     $("statTopStreak").textContent = rows.length ? Math.max(...rows.map((r) => r.longest)) : 0;
 
     lb.innerHTML = rows.length
-      ? rows.slice(0, 10).map((r, i) =>
-          `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
-          `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`).join("")
+      ? rows.slice(0, 10).map((r, i) => {
+          const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
+          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+            `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`;
+        }).join("")
       : `<li class="muted">${t("noCheckIns")}</li>`;
 
     // Season top 10, ranked by on-chain trust score (scoreOf) — the same
@@ -157,9 +207,11 @@ async function loadLeaderboardAndRecent() {
     // Own try/catch + 5-at-a-time reads, so a score-read failure or a
     // rate limit never breaks the main leaderboard above.
     const seasonEl = $("seasonTop10");
+    const myRankEl = $("myRank");
     try {
       if (!rows.length) {
         seasonEl.innerHTML = `<li class="muted">${t("noCheckIns")}</li>`;
+        myRankEl.textContent = !userAddress ? t("myRankNone") : t("myRankZero");
       } else {
         const scored = [];
         for (let i = 0; i < rows.length; i += 5) {
@@ -169,13 +221,25 @@ async function loadLeaderboardAndRecent() {
           scored.push(...batch);
         }
         scored.sort((x, y) => y.score - x.score || y.longest - x.longest || y.total - x.total);
-        seasonEl.innerHTML = scored.slice(0, 10).map((r, i) =>
-          `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
-          `<span class="num">${t("top10Score", { score: r.score, best: r.longest })}</span></li>`).join("");
+        seasonEl.innerHTML = scored.slice(0, 10).map((r, i) => {
+          const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
+          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+            `<span class="num">${t("top10Score", { score: r.score, best: r.longest })}</span></li>`;
+        }).join("");
+        // Your rank among all wallets (not just the top 10 shown).
+        if (!userAddress) myRankEl.textContent = t("myRankNone");
+        else if (myTotal === 0) myRankEl.textContent = t("myRankZero");
+        else {
+          const myIdx = scored.findIndex((r) => r.addr === userAddress.toLowerCase());
+          myRankEl.textContent = myIdx >= 0
+            ? t("myRank", { rank: myIdx + 1, score: scored[myIdx].score })
+            : t("myRankNone");
+        }
       }
     } catch (e) {
       console.warn("season top 10 failed:", e.message);
       seasonEl.innerHTML = `<li class="muted">${t("loadSeasonFail")}</li>`;
+      myRankEl.textContent = t("loadSeasonFail");
     }
 
     const last = events.slice(-10).reverse();
@@ -454,6 +518,7 @@ async function connectWallet() {
     }
     noAgentId = false;
     await loadMyStreak();
+    await loadLeaderboardAndRecent();
   } catch (e) {
     alert(t("connectFailed", { err: e.reason || e.message }));
     btn.disabled = false;
