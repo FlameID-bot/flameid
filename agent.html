@@ -127,9 +127,15 @@ async function pickWorkingProvider() {
   for (const url of urls) {
     const p = new ethers.JsonRpcProvider(url, 56, { staticNetwork: true });
     try {
-      const req = new ethers.FetchRequest(url);
-      req.setHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36");
-      p._getConnection = () => req;
+      // NOTE: a FetchRequest is single-use in ethers v6 — reusing the same
+      // instance throws "request already sent" on the 2nd call. Return a
+      // fresh one per request (this was the profile-page bug: getBlockNumber
+      // passed, then ownerOf failed with UNSUPPORTED_OPERATION).
+      p._getConnection = () => {
+        const req = new ethers.FetchRequest(url);
+        req.setHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36");
+        return req;
+      };
       await p.getBlockNumber();
       return p;
     } catch (e) { /* try next RPC */ }
