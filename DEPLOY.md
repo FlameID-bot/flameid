@@ -27,10 +27,12 @@ in its own extension.
 
 ## 2. Deploy
 
-**Deployer wallet: thaile.ai — `0x30B1a0E287319774B526d43525FFD60BBeD8D06e`.** Fund it
-first: balance was only **0.000106 BNB** (checked 2026-11-25 12:53) — not enough
-for the 3,558,071-gas deploy. Top up to **~0.01 BNB** to cover deploy + smoke
-test + Genesis claim.
+**Deployer wallet: MetaMask `0x9061D89fdA6CB8058e9dae83063b9ED358065C11`** (Diệt chốt
+25/11 ~13:02, thay thaile.ai). Fund it first: balance was only
+**0.000000525 BNB** (checked 2026-11-25 13:02) — effectively zero. Top up to
+**~0.01 BNB** to cover the 3,558,071-gas deploy. Note: this wallet holds **no
+Agent ID** (`balanceOf` = 0), so the post-deploy smoke test (check-in +
+Genesis claim) must be done from thaile.ai, not the deployer.
 
 1. Open the "Deploy & run transactions" panel. Set Environment to your wallet
    extension (in newer Remix this is called "Browser Extension" / "Injected

@@ -6,7 +6,7 @@ earn streak shields that save your streak when life gets in the way.
 
 - **Website:** https://flame-id.xyz (TODO: publish the frontend after deploy; Diệt is buying the domain on Porkbun, $1.29 first year)
 - **X:** [@FlameIDOfficial](https://x.com/FlameIDOfficial)
-- **Contract:** TODO (fill in after deploy) — BNB Chain
+- **Contract:** [`0xa68B69AF101E4262F651119c9830BfBd1603EC97`](https://bscscan.com/address/0xa68B69AF101E4262F651119c9830BfBd1603EC97#code) — BNB Chain, deployed 2026-11-25 (block 135604541, tx `0xfc076e18dcbffb3e05105cf8247f00c7e36fda83f628c8d98555ebfa6bbc0162`), Sourcify exact_match
 - **Hackathon:** Binance Wallet × BNB Chain Agent ID Hackathon, submissions close 09/12 15:00 Bangkok
 
 ## How it works

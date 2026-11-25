@@ -46,8 +46,8 @@ Extra features:
 ## Contract
 
 - Network: BNB Chain (chain ID 56)
-- Contract address: `0x0000000000000000000000000000000000000000` (TODO: fill in after deploy)
-- BscScan: `https://bscscan.com/address/0x0000000000000000000000000000000000000000#code` (TODO)
+- Contract address: `0xa68B69AF101E4262F651119c9830BfBd1603EC97` (deployed 2026-11-25, block 135604541, tx `0xfc076e18dcbffb3e05105cf8247f00c7e36fda83f628c8d98555ebfa6bbc0162`, Sourcify exact_match)
+- BscScan: `https://bscscan.com/address/0xa68B69AF101E4262F651119c9830BfBd1603EC97#code`
 - Source code: TODO (repository link)
 - Agent ID registry (SPACE ID, ERC-721 non-transferable): `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F`
 - The contract has NO owner, NO admin, NO fees, NO token. Nobody can change it after deployment.
@@ -62,7 +62,7 @@ Extra features:
    Day index = `block.timestamp / 86400` (UTC day); `currentDay()` returns it.
 3. Check whether the user can check in today: `canCheckInToday(userAddress)`.
 4. To check in, call `checkIn(referrer)` where `referrer` is the address from
-   the invite link (`?ref=` in the page URL) or `0x0000000000000000000000000000000000000000`
+   the invite link (`?ref=` in the page URL) or the zero address
    if there is none. A referrer only counts on the user's FIRST check-in, and
    only if the referrer already checked in before and is not the user.
    To claim a badge, call `claimBadge(milestone)` with milestone in

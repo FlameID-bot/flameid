@@ -3,10 +3,9 @@
 // asks for a seed phrase, private key, or QR login, and never stores a session.
 // All writes go through the user's wallet after their own confirmation.
 //
-// TODO (deploy): fill in CONTRACT_ADDRESS and DEPLOY_BLOCK after deploying
-// the contract, then re-publish this folder.
-const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000";
-const DEPLOY_BLOCK = 0;
+// Deployed 2026-11-25 (block 135604541, tx 0xfc076e18dcbffb3e05105cf8247f00c7e36fda83f628c8d98555ebfa6bbc0162)
+const CONTRACT_ADDRESS = "0xa68B69AF101E4262F651119c9830BfBd1603EC97";
+const DEPLOY_BLOCK = 135604541;
 const REGISTRY_ADDRESS = "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F";
 const CHAIN_ID = 56; // BNB Chain
 const BSCSCAN = "https://bscscan.com";
