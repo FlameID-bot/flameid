@@ -664,3 +664,24 @@ section[id] { scroll-margin-top: 72px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---------- Trust-score breakdown strip (giveaway ranking) ----------
+   Numerals + icons only — language-neutral. The referrals chip is
+   highlighted gold: referring friends is the fastest way to climb. */
+.score-strip { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0 4px; }
+.score-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 800; font-size: 0.95em; color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px; padding: 7px 13px;
+}
+.score-chip .ico { width: 18px; height: 18px; color: var(--amber); }
+.score-chip.referral {
+  border-color: rgba(247, 201, 72, 0.7);
+  background: linear-gradient(160deg, rgba(247, 201, 72, 0.2), rgba(255, 107, 53, 0.1));
+  box-shadow: 0 0 16px rgba(247, 201, 72, 0.25);
+}
+.score-chip.referral .ico { color: var(--gold); }
+.score-chip.total { border-color: var(--border-gold); color: var(--gold); background: rgba(255, 179, 71, 0.12); }
+.score-chip.total .ico { color: var(--gold); }
