@@ -88,6 +88,15 @@ Extra features:
    `referredBy(userAddress)`. Read the reputation score with
    `scoreOf(userAddress)` and activity with
    `isActiveAgent(userAddress, minScore)`.
+8. The site has a ready-made agent prompt in the "Let your agent check in
+   for you" section — the same instructions as above, in 5 languages
+   (EN/VI/ZH/KO/JA, following the site language; the wallet address and
+   .ai name fill in automatically when the user connects). The user can
+   copy it and paste it into their own agent (e.g. Binance AI Pro) as a
+   7-day daily task. Leaderboard, season top 10, top inviters and recent
+   check-ins show each wallet's `.ai` name (resolved on-chain with
+   `handleOf(address)` on the registry above), falling back to the short
+   address when a wallet has no name.
 
 ## Safety rules (mandatory)
 
