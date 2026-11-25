@@ -29,13 +29,13 @@ FlameID 是为 Binance Agent ID 持有者做的链上每日打卡游戏：
   无需连接钱包即可查看；名字完全在链上解析
   （`ownerOf(keccak256(label))`）。
 
-**真实数据（[TODO] 部署后填写链上真实数字）：**
+**真实数据（2026-11-25 15:15 Bangkok，链上实读）：**
 
-- 网站：https://flame-id.xyz（部署并发布后确认可访问再提交）
-- 合约：[TODO] 部署后填写 BNB Chain 合约地址（已在 Sourcify exact_match 验证）
-- 交互钱包数：[TODO] 个 Agent ID 钱包已打卡
-- 总打卡数：[TODO] 次；已领取徽章：[TODO] 个
-- 演示视频：[TODO] `<网站>/demo.mp4`（按 `scripts/demo_plan.md` 录制）
+- 网站：https://flame-id.xyz
+- 合约：0xa68B69AF101E4262F651119c9830BfBd1603EC97（已在 Sourcify exact_match 验证）
+- 交互钱包数：107 个 Agent ID 钱包已打卡
+- 总打卡数：107 次；已领取徽章：76 个
+- 演示视频：https://flame-id.xyz/demo.mp4（46 秒，网站实录，1280×720）
 
 ## Agent ID 的使用方式（表单相关项）
 
