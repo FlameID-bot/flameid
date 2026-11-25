@@ -174,6 +174,10 @@ async function main() {
     }
     if (addr === ethers.ZeroAddress) throw new Error(t("profileNoOwner"));
     $("profileAddr").textContent = addr;
+    // Address-based profiles (?a=) have no name — show a truncated address
+    // as the title instead of leaving "Loading…" (name-based profiles set
+    // the title earlier, above).
+    if (!name) $("profileName").textContent = addr.slice(0, 10) + "…" + addr.slice(-4);
     const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
     const [streak, score, shields, referrals, season] = await Promise.all([
       contract.streakOf(addr),
