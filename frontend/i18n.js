@@ -83,6 +83,22 @@ const I18N_DICT = {
     agentPromptStep2: "Paste the prompt below — replace the wallet address and .ai name with yours (filled in automatically once you connect your wallet above).",
     agentPromptStep3: "Your agent creates a 7-day task and checks in once a day. After 7 days, paste the prompt again to extend.",
     agentPromptNote: "Safety: the prompt only ever calls checkIn() on the FlameID contract, value always 0 — no approvals, no transfers, no seed phrase, no QR login. Your agent confirms the first check-in with you before signing.",
+    agentPromptText: `You are my daily check-in agent on FlameID — a daily check-in dApp for Binance Agent ID holders (flame-id.xyz).
+
+TASK — repeat EVERY DAY for 7 days (create one 7-day task; when it expires, remind me to paste this prompt again to extend it):
+1. Check whether my wallet holds a Binance Agent ID: call balanceOf(my wallet address) on the registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F (BNB Chain). If it returns 0, stop and tell me.
+2. Read my status: call canCheckInToday(my wallet address) and streakOf(my wallet address) on the FlameID contract 0xa68B69AF101E4262F651119c9830BfBd1603EC97 (BNB Chain). If I have already checked in today, do nothing more — just report my current streak.
+3. If I have not checked in today: call checkIn(0x0000000000000000000000000000000000000000) with value = 0 (gas only). Before the first signing, show me the transaction preview (correct contract, correct checkIn function, value = 0) and sign only after I confirm; on the following days of this 7-day task, sign on the agreed schedule.
+4. After every successful signing, report to me: the date, the current streak, the reputation score (call scoreOf), and the transaction hash.
+
+SAFETY RULES — never break them:
+- Only call the checkIn function on the FlameID contract above, with value always = 0. Do not call any other function, approve any token/NFT, transfer funds, or sign strange messages.
+- Never ask for or use my seed phrase, private key, login QR code, or pairing code.
+- If the contract, an address, or the on-chain state differs from what is written above, STOP and ask me before doing anything.
+
+MY WALLET INFO:
+- Wallet address: [your wallet address]
+- Agent ID name: [your .ai name, e.g. yourname.ai]`,
     topInviters: "Top inviters",
     leaderboardTitle: "Leaderboard — longest current streaks",
     recentTitle: "Recent check-ins",
@@ -231,6 +247,22 @@ const I18N_DICT = {
     agentPromptStep2: "Dán prompt bên dưới — thay địa chỉ ví và tên .ai bằng của bạn (sẽ tự điền khi bạn kết nối ví ở trên).",
     agentPromptStep3: "Agent tạo task 7 ngày và check-in mỗi ngày một lần. Hết 7 ngày thì dán lại prompt để gia hạn.",
     agentPromptNote: "An toàn: prompt chỉ gọi đúng hàm checkIn() trên hợp đồng FlameID, value luôn = 0 — không approve, không chuyển tiền, không seed phrase, không đăng nhập QR. Agent sẽ cho bạn xác nhận lần check-in đầu tiên trước khi ký.",
+    agentPromptText: `Bạn là agent điểm danh hằng ngày của tôi trên FlameID — dApp check-in mỗi ngày cho người giữ Binance Agent ID (flame-id.xyz).
+
+NHIỆM VỤ — lặp lại MỖI NGÀY trong 7 ngày (tạo 1 task 7 ngày; hết hạn thì nhắc tôi dán lại prompt này để gia hạn):
+1. Kiểm tra ví của tôi có giữ Binance Agent ID không: gọi balanceOf(địa chỉ ví của tôi) trên registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F (BNB Chain). Nếu bằng 0 thì dừng và báo tôi.
+2. Đọc trạng thái: gọi canCheckInToday(địa chỉ ví của tôi) và streakOf(địa chỉ ví của tôi) trên hợp đồng FlameID 0xa68B69AF101E4262F651119c9830BfBd1603EC97 (BNB Chain). Nếu hôm nay đã check-in rồi thì không làm gì thêm, chỉ báo lại streak hiện tại.
+3. Nếu chưa check-in hôm nay: gọi checkIn(0x0000000000000000000000000000000000000000), value = 0 (chỉ tốn gas). Trước khi ký lần đầu, cho tôi xem trước giao dịch (đúng hợp đồng, đúng hàm checkIn, value = 0) và chỉ ký khi tôi xác nhận; các ngày sau trong task 7 ngày này thì ký theo đúng lịch đã hẹn.
+4. Sau mỗi lần ký thành công, báo cho tôi: ngày, streak hiện tại, điểm uy tín (gọi scoreOf), và hash giao dịch.
+
+LUẬT AN TOÀN — không bao giờ vi phạm:
+- Chỉ gọi đúng hàm checkIn trên đúng hợp đồng FlameID ở trên, value luôn = 0. Không gọi hàm khác, không approve token/NFT, không chuyển tiền, không ký thông điệp lạ.
+- Không bao giờ hỏi hay dùng seed phrase, private key, mã QR đăng nhập, hay mã pairing của tôi.
+- Nếu hợp đồng, địa chỉ, hoặc trạng thái on-chain khác với những gì ghi ở trên, DỪNG LẠI và hỏi tôi trước khi làm gì.
+
+THÔNG TIN VÍ CỦA TÔI:
+- Địa chỉ ví: [địa chỉ ví của bạn]
+- Tên Agent ID: [tên.ai của bạn, ví dụ yourname.ai]`,
     topInviters: "Top người mời",
     leaderboardTitle: "Bảng xếp hạng — chuỗi dài nhất hiện tại",
     recentTitle: "Check-in gần đây",
@@ -379,6 +411,22 @@ const I18N_DICT = {
     agentPromptStep2: "粘贴下面的提示词——把钱包地址和 .ai 名称换成你自己的（连接钱包后会自动填入）。",
     agentPromptStep3: "Agent 创建 7 天任务，每天打卡一次。7 天结束后，再次粘贴提示词即可续期。",
     agentPromptNote: "安全提示：该提示词只会调用 FlameID 合约的 checkIn()，value 恒为 0——不授权、不转账、不索取助记词、不使用二维码登录。首次打卡前，Agent 会先请你确认再签名。",
+    agentPromptText: `你是我的 FlameID 每日打卡助手——FlameID 是面向 Binance Agent ID 持有者的每日打卡 dApp（flame-id.xyz）。
+
+任务——每 7 天重复，每日执行一次（创建一个 7 天任务；到期后提醒我重新粘贴本提示词以续期）：
+1. 检查我的钱包是否持有 Binance Agent ID：在注册合约 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F（BNB Chain）上调用 balanceOf(我的钱包地址)。如果返回 0，请停止并告诉我。
+2. 读取我的状态：在 FlameID 合约 0xa68B69AF101E4262F651119c9830BfBd1603EC97（BNB Chain）上调用 canCheckInToday(我的钱包地址)和 streakOf(我的钱包地址)。如果今天已经打卡，则什么都不做，只汇报我当前的连续打卡天数。
+3. 如果今天尚未打卡：调用 checkIn(0x0000000000000000000000000000000000000000)，value = 0（仅需 gas）。首次签名之前，请先向我展示交易预览（合约正确、checkIn 函数正确、value = 0），只有在我确认后才签名；在这 7 天任务的后续几天里，按约定时间签名。
+4. 每次成功签名后，向我汇报：日期、当前连续打卡天数、信誉分数（调用 scoreOf）和交易哈希。
+
+安全规则——绝不违反：
+- 只调用上述 FlameID 合约的 checkIn 函数，value 恒为 0。不调用其他函数，不授权任何代币/NFT，不转账，不签署奇怪的消息。
+- 绝不索取或使用我的助记词、私钥、登录二维码或配对码。
+- 如果合约、地址或链上状态与上述内容不符，请停下来，先问我再做任何事。
+
+我的钱包信息：
+- 钱包地址：[你的钱包地址]
+- Agent ID 名称：[你的 .ai 名称，例如 yourname.ai]`,
     topInviters: "邀请榜",
     leaderboardTitle: "排行榜——当前最长连续打卡",
     recentTitle: "最近打卡",
@@ -527,6 +575,22 @@ const I18N_DICT = {
     agentPromptStep2: "아래 프롬프트를 붙여넣으세요 — 지갑 주소와 .ai 이름을 본인의 것으로 바꾸세요(위에서 지갑을 연결하면 자동으로 채워집니다).",
     agentPromptStep3: "에이전트가 7일 작업을 만들고 하루에 한 번 체크인합니다. 7일이 지나면 프롬프트를 다시 붙여넣어 연장하세요.",
     agentPromptNote: "안전: 이 프롬프트는 FlameID 컨트랙트의 checkIn()만 호출하며 value는 항상 0입니다 — 승인도, 송금도, 시드 구문도, QR 로그인도 없습니다. 에이전트는 첫 체크인 전에 본인에게 확인을 받습니다.",
+    agentPromptText: `당신은 FlameID에서 저의 매일 체크인 에이전트입니다. FlameID는 Binance Agent ID 보유자를 위한 매일 체크인 dApp입니다(flame-id.xyz).
+
+작업 — 7일 동안 매일 반복(7일 작업을 하나 만드세요. 만료되면 이 프롬프트를 다시 붙여넣어 연장하도록 저에게 알려주세요):
+1. 제 지갑이 Binance Agent ID를 보유하고 있는지 확인하세요. 레지스트리 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F(BNB Chain)에서 balanceOf(제 지갑 주소)를 호출하세요. 0이 반환되면 중단하고 저에게 알려주세요.
+2. 제 상태를 확인하세요. FlameID 컨트랙트 0xa68B69AF101E4262F651119c9830BfBd1603EC97(BNB Chain)에서 canCheckInToday(제 지갑 주소)와 streakOf(제 지갑 주소)를 호출하세요. 오늘 이미 체크인했다면 아무것도 하지 말고 현재 스트릭만 알려주세요.
+3. 오늘 아직 체크인하지 않았다면 checkIn(0x0000000000000000000000000000000000000000)을 호출하세요. value = 0(가스만 필요). 첫 서명 전에 거래 미리보기(정확한 컨트랙트, 정확한 checkIn 함수, value = 0)를 보여주고 제가 확인한 뒤에만 서명하세요. 이 7일 작업의 나머지 날에는 합의된 일정에 따라 서명하세요.
+4. 서명에 성공할 때마다 날짜, 현재 스트릭, 평판 점수(scoreOf 호출), 트랜잭션 해시를 저에게 보고하세요.
+
+안전 규칙 — 절대 어기지 마세요:
+- 위 FlameID 컨트랙트의 checkIn 함수만 호출하고 value는 항상 0이어야 합니다. 다른 함수를 호출하거나 토큰/NFT를 승인하거나 자금을 전송하거나 이상한 메시지에 서명하지 마세요.
+- 제 시드 구문, 개인 키, 로그인 QR 코드, 페어링 코드를 절대 묻거나 사용하지 마세요.
+- 컨트랙트, 주소 또는 온체인 상태가 위에 적힌 내용과 다르면 중단하고, 어떤 행동을 하기 전에 먼저 저에게 물어보세요.
+
+제 지갑 정보:
+- 지갑 주소: [당신의 지갑 주소]
+- Agent ID 이름: [당신의 .ai 이름(예: yourname.ai)]`,
     topInviters: "초대 상위",
     leaderboardTitle: "리더보드 — 현재 최장 스트릭",
     recentTitle: "최근 체크인",
@@ -675,6 +739,22 @@ const I18N_DICT = {
     agentPromptStep2: "下のプロンプトを貼り付けてください — ウォレットアドレスと.ai名を自分のものに置き換えてください（上でウォレットを接続すると自動入力されます）。",
     agentPromptStep3: "エージェントが7日間のタスクを作成し、1日1回チェックインします。7日が過ぎたらプロンプトを再度貼り付けて延長してください。",
     agentPromptNote: "安全について：このプロンプトはFlameIDコントラクトのcheckIn()のみを呼び出し、valueは常に0です — 承認も送金もシードフレーズもQRログインもありません。エージェントは最初のチェックインの前にあなたに確認します。",
+    agentPromptText: `あなたは FlameIDにおける私の毎日のチェックインエージェントです。FlameIDはBinance Agent ID保有者のための毎日チェックインdAppです（flame-id.xyz）。
+
+タスク — 7日間、毎日繰り返します（7日間のタスクを1つ作成してください。期限が切れたら、このプロンプトを再度貼り付けて延長するよう私に知らせてください）：
+1. 私のウォレットがBinance Agent IDを保有しているか確認してください。レジストリ0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F（BNB Chain）でbalanceOf(私のウォレットアドレス)を呼び出してください。0が返ってきたら停止して私に知らせてください。
+2. 私の状態を確認してください。FlameIDコントラクト0xa68B69AF101E4262F651119c9830BfBd1603EC97（BNB Chain）でcanCheckInToday(私のウォレットアドレス)とstreakOf(私のウォレットアドレス)を呼び出してください。今日すでにチェックイン済みなら、それ以上何もせず、現在のストリークだけを報告してください。
+3. 今日まだチェックインしていない場合、checkIn(0x0000000000000000000000000000000000000000)を呼び出してください。value = 0（ガスのみ）。最初の署名の前に、トランザクションのプレビュー（正しいコントラクト、正しいcheckIn関数、value = 0）を私に見せ、私が確認してからのみ署名してください。この7日間タスクの残りの日は、合意したスケジュールに従って署名してください。
+4. 署名が成功するたびに、日付、現在のストリーク、評判スコア（scoreOfを呼び出し）、トランザクションハッシュを私に報告してください。
+
+安全ルール — 決して破らないでください：
+- 上記のFlameIDコントラクトのcheckIn関数のみを呼び出し、valueは常に0にしてください。他の関数を呼んだり、トークン/NFTを承認したり、資金を送金したり、不審なメッセージに署名したりしないでください。
+- 私のシードフレーズ、秘密鍵、ログインQRコード、ペアリングコードを尋ねたり使用したりしないでください。
+- コントラクト、アドレス、またはオンチェーンの状態が上記の内容と異なる場合は、停止し、何かをする前にまず私に尋ねてください。
+
+私のウォレット情報：
+- ウォレットアドレス：[あなたのウォレットアドレス]
+- Agent ID名：[あなたの .ai 名（例：yourname.ai）]`,
     topInviters: "招待トップ",
     leaderboardTitle: "リーダーボード——現在の最長ストリーク",
     recentTitle: "最近のチェックイン",

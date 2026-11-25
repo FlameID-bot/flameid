@@ -53,9 +53,23 @@ let contract = null;
 let userAddress = null;
 let userSigner = null;
 let myReferrer = ethers.ZeroAddress;
-let agentPromptTemplate = null;
+let myInviteRef = null;
 let noAgentId = false;
 let myReferredAddr = null;
+
+// Prompt placeholders per language — the fill text must match the
+// agentPromptText value of the same language in i18n.js.
+const PROMPT_PLACEHOLDERS = {
+  en: ["[your wallet address]", "[your .ai name, e.g. yourname.ai]"],
+  vi: ["[địa chỉ ví của bạn]", "[tên.ai của bạn, ví dụ yourname.ai]"],
+  zh: ["[你的钱包地址]", "[你的 .ai 名称，例如 yourname.ai]"],
+  ko: ["[당신의 지갑 주소]", "[당신의 .ai 이름(예: yourname.ai)]"],
+  ja: ["[あなたのウォレットアドレス]", "[あなたの .ai 名（例：yourname.ai）]"],
+};
+
+// .ai name cache for leaderboard rows: lowercase address -> display string.
+const handleCache = new Map();
+let readRegistry = null;
 
 function makeProvider(url) {
   const req = new ethers.FetchRequest(url);
@@ -132,6 +146,58 @@ async function resolveReferrerFromUrl(registry) {
     return await registry.ownerOf(tokenId);
   } catch (e) {
     return ethers.ZeroAddress;
+  }
+}
+
+// Fill the agent prompt with my wallet + .ai name so it is ready to copy.
+// The template comes from the i18n dictionary in the current language,
+// so a language switch re-fills it in the new language.
+function fillAgentPrompt() {
+  if (!userAddress) return;
+  const promptEl = $("agentPrompt");
+  if (!promptEl) return;
+  try {
+    const lang = (window.FlameI18n && window.FlameI18n.lang) || "en";
+    const ph = PROMPT_PLACEHOLDERS[lang] || PROMPT_PLACEHOLDERS.en;
+    let text = t("agentPromptText");
+    text = text.replace(ph[0], userAddress);
+    if (myInviteRef && myInviteRef !== userAddress) text = text.replace(ph[1], myInviteRef);
+    promptEl.textContent = text;
+  } catch (e) {
+    console.warn("agent prompt fill failed:", e.message);
+  }
+}
+
+// .ai names for leaderboard / season / referrer / recent rows.
+// Rows render the short address first, then swap in "<handle>.ai" once
+// the registry answers. Results are cached per address; a failed lookup
+// keeps the short address.
+async function resolveHandles(addrs) {
+  if (!readRegistry) return;
+  const missing = [...new Set(addrs.map((a) => a.toLowerCase()))].filter((a) => !handleCache.has(a));
+  for (let i = 0; i < missing.length; i += 5) {
+    await Promise.all(missing.slice(i, i + 5).map(async (a) => {
+      try {
+        const h = await readRegistry.handleOf(a);
+        handleCache.set(a, h ? `${h}.ai` : shortAddr(a));
+      } catch (e) {
+        handleCache.set(a, shortAddr(a));
+      }
+    }));
+  }
+}
+
+async function enhanceAddrNames() {
+  try {
+    const spans = [...document.querySelectorAll("span.addr[data-addr]")];
+    if (!spans.length) return;
+    await resolveHandles(spans.map((s) => s.dataset.addr));
+    for (const s of spans) {
+      const name = handleCache.get(s.dataset.addr.toLowerCase());
+      if (name) s.textContent = name;
+    }
+  } catch (e) {
+    console.warn("addr name enhance failed:", e.message);
   }
 }
 
@@ -214,7 +280,7 @@ async function loadLeaderboardAndRecent() {
     lb.innerHTML = rows.length
       ? rows.slice(0, 10).map((r, i) => {
           const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
-          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+          return `<li${me}>#${i + 1} <span class="addr" data-addr="${r.addr}">${shortAddr(r.addr)}</span>` +
             `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`;
         }).join("")
       : `<li class="muted">${t("noCheckIns")}</li>`;
@@ -241,7 +307,7 @@ async function loadLeaderboardAndRecent() {
         scored.sort((x, y) => y.score - x.score || y.longest - x.longest || y.total - x.total);
         seasonEl.innerHTML = scored.slice(0, 10).map((r, i) => {
           const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
-          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+          return `<li${me}>#${i + 1} <span class="addr" data-addr="${r.addr}">${shortAddr(r.addr)}</span>` +
             `<span class="num">${t("top10Score", { score: r.score, best: r.longest })}</span></li>`;
         }).join("");
         // Your rank among all wallets (not just the top 10 shown).
@@ -263,9 +329,12 @@ async function loadLeaderboardAndRecent() {
     const last = events.slice(-10).reverse();
     recent.innerHTML = last.length
       ? last.map((ev) =>
-          `<li><span class="addr">${shortAddr(ev.args.user)}</span> ` +
+          `<li><span class="addr" data-addr="${ev.args.user.toLowerCase()}">${shortAddr(ev.args.user)}</span> ` +
           `${t("checkedIn", { streak: Number(ev.args.currentStreak), date: dayToDate(ev.args.day) })}</li>`).join("")
       : `<li class="muted">${t("recentEmpty")}</li>`;
+
+    // Swap short addresses for .ai names on all four lists above.
+    enhanceAddrNames();
   } catch (e) {
     console.warn("loadLeaderboardAndRecent failed:", e.message);
     lb.innerHTML = `<li class="muted">${t("loadLbFail")}</li>`;
@@ -321,10 +390,12 @@ async function loadTopReferrers() {
       ? counts.slice(0, 10).map((r, i) => {
           const me = userAddress && r.addr === userAddress.toLowerCase() ? ' class="me"' : "";
           const pending = r.invited > r.count ? ` ${t("refPending", { n: r.invited - r.count })}` : "";
-          return `<li${me}>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+          return `<li${me}>#${i + 1} <span class="addr" data-addr="${r.addr}">${shortAddr(r.addr)}</span>` +
             `<span class="num">${r.count} ${t("qualified")}${pending}</span></li>`;
         }).join("")
       : `<li class="muted">${t("noReferrals")}</li>`;
+    // Swap short addresses for .ai names.
+    enhanceAddrNames();
     // Your referral rank among all referrers.
     if (!userAddress) myRefRankEl.textContent = t("myRefRankNone");
     else if (myQualified === 0 && myInvited === 0) myRefRankEl.textContent = t("myRefRankZero");
@@ -589,19 +660,8 @@ async function connectWallet() {
     $("inviteEmpty").classList.add("hidden");
 
     // Fill the agent prompt with my wallet + .ai name so it is ready to copy.
-    try {
-      const promptEl = $("agentPrompt");
-      if (promptEl) {
-        if (!agentPromptTemplate) agentPromptTemplate = promptEl.textContent;
-        let filled = agentPromptTemplate.replace("[địa chỉ ví của bạn]", userAddress);
-        if (inviteRef !== userAddress) {
-          filled = filled.replace("[tên.ai của bạn, ví dụ yourname.ai]", inviteRef);
-        }
-        promptEl.textContent = filled;
-      }
-    } catch (e) {
-      console.warn("agent prompt fill failed:", e.message);
-    }
+    myInviteRef = inviteRef;
+    fillAgentPrompt();
 
     // Agent ID check.
     const bal = await registry.balanceOf(userAddress);
@@ -658,6 +718,10 @@ async function init() {
   try {
     readProvider = await pickWorkingProvider();
     contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, readProvider);
+    // Registry (read-only): .ai handle lookups for leaderboard rows.
+    readRegistry = new ethers.Contract(REGISTRY_ADDRESS, [
+      "function handleOf(address) view returns (string)",
+    ], readProvider);
     await loadStats();
     await loadLeaderboardAndRecent();
     await loadTopReferrers();
@@ -686,6 +750,9 @@ document.addEventListener("flameid-lang", () => {
   if (myReferredAddr) {
     $("referrerLine").textContent = t("invitedBy", { addr: shortAddr(myReferredAddr) });
   }
+  // Re-fill the agent prompt in the new language (applyI18n already
+  // reset it to the new language's template).
+  fillAgentPrompt();
   if (contract) {
     loadStats();
     loadLeaderboardAndRecent();
