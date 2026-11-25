@@ -377,6 +377,21 @@ main { max-width: 920px; margin: 0 auto; padding: 0 16px 40px; }
 }
 .invite-link span { flex: 1; }
 
+/* ---------- Agent prompt box ---------- */
+.prompt-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 0.85em;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 420px;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+
 .rank-list { margin: 10px 0 0; padding: 0; list-style: none; }
 .rank-list li {
   display: flex;

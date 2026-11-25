@@ -53,6 +53,7 @@ let contract = null;
 let userAddress = null;
 let userSigner = null;
 let myReferrer = ethers.ZeroAddress;
+let agentPromptTemplate = null;
 let noAgentId = false;
 let myReferredAddr = null;
 
@@ -587,6 +588,21 @@ async function connectWallet() {
     $("inviteBox").classList.remove("hidden");
     $("inviteEmpty").classList.add("hidden");
 
+    // Fill the agent prompt with my wallet + .ai name so it is ready to copy.
+    try {
+      const promptEl = $("agentPrompt");
+      if (promptEl) {
+        if (!agentPromptTemplate) agentPromptTemplate = promptEl.textContent;
+        let filled = agentPromptTemplate.replace("[địa chỉ ví của bạn]", userAddress);
+        if (inviteRef !== userAddress) {
+          filled = filled.replace("[tên.ai của bạn, ví dụ mrchrismast.ai]", inviteRef);
+        }
+        promptEl.textContent = filled;
+      }
+    } catch (e) {
+      console.warn("agent prompt fill failed:", e.message);
+    }
+
     // Agent ID check.
     const bal = await registry.balanceOf(userAddress);
     if (bal === 0n) {
@@ -617,6 +633,15 @@ async function init() {
       await navigator.clipboard.writeText($("inviteLink").textContent);
       $("copyInviteBtn").textContent = t("copied");
       setTimeout(() => { $("copyInviteBtn").textContent = t("copy"); }, 2000);
+    } catch (e) {
+      alert(t("copyFailed"));
+    }
+  });
+  $("copyPromptBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText($("agentPrompt").textContent);
+      $("copyPromptBtn").textContent = t("copied");
+      setTimeout(() => { $("copyPromptBtn").textContent = t("copy"); }, 2000);
     } catch (e) {
       alert(t("copyFailed"));
     }

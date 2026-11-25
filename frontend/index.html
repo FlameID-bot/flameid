@@ -116,6 +116,36 @@
     <p id="myRefRank" class="muted" data-i18n="myRefRankNone">Connect your wallet to see your referral rank.</p>
   </section>
 
+  <!-- Agent prompt: let the user's own agent (e.g. Binance AI Pro) do the
+       daily check-in. Copy-paste prompt, value-0 checkIn only. -->
+  <section class="card" id="agent-prompt">
+    <h2 class="ic-flame" data-i18n="agentPromptTitle">Let your agent check in for you</h2>
+    <p data-i18n="agentPromptDesc">Copy the prompt below and paste it into Binance AI Pro (Binance app → AI Pro) or your own AI agent. It creates a 7-day daily task: your agent checks your streak every day and signs the check-in for you.</p>
+    <ol class="how">
+      <li data-i18n="agentPromptStep1">Open the Binance app → AI Pro (or your own AI agent connected to your Agentic Wallet).</li>
+      <li data-i18n="agentPromptStep2">Paste the prompt below — replace the wallet address and .ai name with yours (filled in automatically once you connect your wallet above).</li>
+      <li data-i18n="agentPromptStep3">Your agent creates a 7-day task and checks in once a day. After 7 days, paste the prompt again to extend.</li>
+    </ol>
+    <pre id="agentPrompt" class="prompt-box">Bạn là agent điểm danh hằng ngày của tôi trên FlameID — dApp check-in mỗi ngày cho người giữ Binance Agent ID (flame-id.xyz).
+
+NHIỆM VỤ — lặp lại MỖI NGÀY trong 7 ngày (tạo 1 task 7 ngày; hết hạn thì nhắc tôi dán lại prompt này để gia hạn):
+1. Kiểm tra ví của tôi có giữ Binance Agent ID không: gọi balanceOf(địa chỉ ví của tôi) trên registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F (BNB Chain). Nếu bằng 0 thì dừng và báo tôi.
+2. Đọc trạng thái: gọi canCheckInToday(địa chỉ ví của tôi) và streakOf(địa chỉ ví của tôi) trên hợp đồng FlameID 0xa68B69AF101E4262F651119c9830BfBd1603EC97 (BNB Chain). Nếu hôm nay đã check-in rồi thì không làm gì thêm, chỉ báo lại streak hiện tại.
+3. Nếu chưa check-in hôm nay: gọi checkIn(0x0000000000000000000000000000000000000000), value = 0 (chỉ tốn gas). Trước khi ký lần đầu, cho tôi xem trước giao dịch (đúng hợp đồng, đúng hàm checkIn, value = 0) và chỉ ký khi tôi xác nhận; các ngày sau trong task 7 ngày này thì ký theo đúng lịch đã hẹn.
+4. Sau mỗi lần ký thành công, báo cho tôi: ngày, streak hiện tại, điểm uy tín (gọi scoreOf), và hash giao dịch.
+
+LUẬT AN TOÀN — không bao giờ vi phạm:
+- Chỉ gọi đúng hàm checkIn trên đúng hợp đồng FlameID ở trên, value luôn = 0. Không gọi hàm khác, không approve token/NFT, không chuyển tiền, không ký thông điệp lạ.
+- Không bao giờ hỏi hay dùng seed phrase, private key, mã QR đăng nhập, hay mã pairing của tôi.
+- Nếu hợp đồng, địa chỉ, hoặc trạng thái on-chain khác với những gì ghi ở trên, DỪNG LẠI và hỏi tôi trước khi làm gì.
+
+THÔNG TIN VÍ CỦA TÔI:
+- Địa chỉ ví: [địa chỉ ví của bạn]
+- Tên Agent ID: [tên.ai của bạn, ví dụ mrchrismast.ai]</pre>
+    <p><button id="copyPromptBtn" class="btn-primary" data-i18n="copy">Copy</button></p>
+    <p class="muted small" data-i18n="agentPromptNote">Safety: the prompt only ever calls checkIn() on the FlameID contract, value always 0 — no approvals, no transfers, no seed phrase, no QR login. Your agent confirms the first check-in with you before signing.</p>
+  </section>
+
   <section class="card">
     <h2 class="ic-list" data-i18n="leaderboardTitle">Leaderboard — longest current streaks</h2>
     <ol id="leaderboard" class="rank-list"><li class="muted" data-i18n="loading">Loading…</li></ol>
