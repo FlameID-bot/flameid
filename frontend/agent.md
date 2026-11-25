@@ -102,6 +102,10 @@ Extra features:
 
 ## Giveaway (off-chain)
 
-If this project wins a prize in the hackathon, 20% of the prize will be shared
-among the top 10 longest streaks at the close of submissions — 09 December,
-15:00 Bangkok time. The giveaway is NOT part of the smart contract.
+A guaranteed 100 USDT prize pool will be shared among the top 10 highest
+trust scores (`scoreOf`, max 140: current streak + total check-ins +
+qualified referrals + account age + shields) at the close of submissions —
+09 December, 15:00 Bangkok time. Split: 1st 30 USDT, 2nd 20, 3rd 15, 4th 10,
+5th 8, 6th 6, 7th 4, 8th 3, 9th 2, 10th 2. If this project wins a prize in the
+hackathon, an extra 20% of the prize goes on top. The giveaway is NOT part
+of the smart contract.
