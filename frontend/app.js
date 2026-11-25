@@ -113,7 +113,7 @@ async function getLogsChunked(filter, fromBlock, toBlock) {
 }
 
 // Referrer from ?ref= : a wallet address OR an Agent ID name
-// (?ref=mrchrismast.ai). Names resolve on-chain via the registry:
+// (?ref=yourname.ai). Names resolve on-chain via the registry:
 // ownerOfHandle(label) — label WITHOUT the .ai suffix — with a
 // keccak256(label) -> ownerOf fallback (same as agent.html).
 // Old ?ref=0x... links keep working.
@@ -574,7 +574,7 @@ async function connectWallet() {
     }
 
     // Invite link: the user's .ai name when they have one
-    // (?ref=mrchrismast.ai), otherwise their wallet address.
+    // (?ref=yourname.ai), otherwise their wallet address.
     // Old ?ref=0x... links keep working.
     let inviteRef = userAddress;
     try {
@@ -595,7 +595,7 @@ async function connectWallet() {
         if (!agentPromptTemplate) agentPromptTemplate = promptEl.textContent;
         let filled = agentPromptTemplate.replace("[địa chỉ ví của bạn]", userAddress);
         if (inviteRef !== userAddress) {
-          filled = filled.replace("[tên.ai của bạn, ví dụ mrchrismast.ai]", inviteRef);
+          filled = filled.replace("[tên.ai của bạn, ví dụ yourname.ai]", inviteRef);
         }
         promptEl.textContent = filled;
       }

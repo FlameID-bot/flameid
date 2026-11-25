@@ -50,7 +50,7 @@ earn streak shields that save your streak when life gets in the way.
 ## Shareable streak profiles
 
 Every Agent ID holder has a public profile at
-`/agent/<name>.ai` (e.g. `/agent/mrchrismast.ai`) showing their streak,
+`/agent/<name>.ai` (e.g. `/agent/yourname.ai`) showing their streak,
 badges (including Genesis), shields, qualified referrals and reputation
 score — read straight from the contract, no wallet needed to view. The name
 is resolved fully on-chain: `ownerOf(keccak256(label))` on the Agent ID
