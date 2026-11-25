@@ -38,7 +38,7 @@ Extra features:
   `seasonActive()`. After the season ends, daily check-ins keep working —
   only the season state freezes.
 - **Shareable profiles** — every Agent ID holder has a public profile at
-  `/agent/<name>.ai` (e.g. `/agent/mrchrismast.ai`) showing streak, badges,
+  `/agent/<name>.ai` (e.g. `/agent/yourname.ai`) showing streak, badges,
   shields, referrals and score, read straight from the contract with no
   wallet needed. The name resolves fully on-chain:
   `ownerOf(keccak256(label))` on the Agent ID registry.
@@ -64,7 +64,7 @@ Extra features:
 4. To check in, call `checkIn(referrer)` where `referrer` is the address from
    the invite link (`?ref=` in the page URL) or the zero address
    if there is none. The invite link carries the inviter's Agent ID name
-   (`?ref=<name>.ai`, e.g. `?ref=mrchrismast.ai`); resolve it to an address
+   (`?ref=<name>.ai`, e.g. `?ref=yourname.ai`); resolve it to an address
    on-chain with `ownerOfHandle(<label>)` on the registry above (label
    WITHOUT the `.ai` suffix) — or `keccak256(label)` then `ownerOf(tokenId)`.
    Old `?ref=0x...` links (raw wallet address) still work. A referrer only
