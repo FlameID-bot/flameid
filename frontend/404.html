@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — FlameID</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/webp" href="logo.webp">
+</head>
+<body>
+<main style="padding-top: 60px; text-align: center;">
+  <h1>Page not found</h1>
+  <p class="muted">Redirecting…</p>
+  <p><a href="./">Go to the homepage →</a></p>
+</main>
+<script>
+// GitHub Pages serves this file for any unknown path, including
+// /agent/<name.ai> profile links. Redirect those to the profile page
+// (agent.html?name=<name>), keeping the site base path (works both at
+// the domain root and under a project sub-path).
+(function () {
+  var parts = window.location.pathname.split("/").filter(Boolean);
+  var ai = parts.indexOf("agent");
+  if (ai >= 0 && parts[ai + 1]) {
+    var base = "/" + parts.slice(0, ai).join("/") + "/";
+    window.location.replace(base + "agent.html?name=" + encodeURIComponent(parts[ai + 1]));
+  }
+})();
+</script>
+</body>
+</html>

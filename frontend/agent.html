@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent profile — FlameID</title>
+<meta name="description" content="Public streak profile for an Agent ID holder on FlameID — streak, badges, shields and reputation score, read straight from the chain.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/webp" href="logo.webp">
+<style>
+  .profile-flame { font-size: 72px; line-height: 1; }
+  .profile-name { font-size: 1.8em; font-weight: 800; margin: 8px 0 2px; word-break: break-all; }
+  .profile-addr { color: #9aa0b5; font-size: 0.9em; word-break: break-all; }
+  .badge-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .badge-chip { border: 1px solid #2a2f45; border-radius: 999px; padding: 6px 12px; font-size: 0.9em; font-weight: 700; }
+  .badge-chip.earned { border-color: #ffb347; color: #ffb347; }
+  .badge-chip.locked { color: #9aa0b5; opacity: 0.6; }
+  .share-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="profile-flame">🔥</div>
+    <div class="profile-name" id="profileName">Loading…</div>
+    <div class="profile-addr" id="profileAddr"></div>
+  </div>
+</header>
+
+<main>
+  <section class="card" id="profileCard">
+    <div class="streak-big"><span id="pStreak">–</span><span class="streak-unit">day streak 🔥</span></div>
+    <div class="streak-grid">
+      <div><div class="mini-num" id="pLongest">–</div><div class="mini-label">Longest streak</div></div>
+      <div><div class="mini-num" id="pTotal">–</div><div class="mini-label">Total check-ins</div></div>
+      <div><div class="mini-num" id="pScore">–</div><div class="mini-label">Reputation score (max 140)</div></div>
+      <div><div class="mini-num" id="pShields">–</div><div class="mini-label">Streak shields 🛡️</div></div>
+      <div><div class="mini-num" id="pReferrals">–</div><div class="mini-label">Friends invited (qualified)</div></div>
+      <div><div class="mini-num" id="pSeasonBest">–</div><div class="mini-label">Best Season 1 streak</div></div>
+    </div>
+    <h3>Badges</h3>
+    <div class="badge-list" id="pBadges"><span class="muted">Loading…</span></div>
+    <p id="pError" class="muted small"></p>
+    <div class="share-row">
+      <button id="shareXBtn" class="btn-primary" disabled>Share on X</button>
+      <a id="homeLink" class="btn-secondary" href="./">Start your own streak →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Contract: <a id="contractLink" href="#" target="_blank" rel="noopener">not deployed yet</a> (BNB Chain)</p>
+  <p><a href="agent.md">For AI agents: agent.md</a></p>
+</footer>
+
+<script src="vendor/ethers.umd.min.js"></script>
+<script src="abi.js"></script>
+<script>
+// Profile page: /agent/<name.ai> (via 404.html redirect) or agent.html?name=<name.ai>
+// and agent.html?a=<wallet address>. Read-only — no wallet connection needed.
+const REGISTRY_ADDRESS = "0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F";
+const REGISTRY_ABI = ["function ownerOf(uint256 tokenId) view returns (address)"];
+const BSCSCAN = "https://bscscan.com";
+const MILESTONES = [7, 14, 30, 60, 100];
+const SPECIAL = [[1, "Genesis"], [2, "Survivor"], [3, "Champion"]];
+
+const $ = (id) => document.getElementById(id);
+
+async function pickWorkingProvider() {
+  const urls = [
+    "https://bsc-dataseed.bnbchain.org",
+    "https://bsc-dataseed1.bnbchain.org",
+    "https://bsc-dataseed2.bnbchain.org",
+    "https://bsc.publicnode.com",
+    "https://rpc.48.club",
+  ];
+  for (const url of urls) {
+    const p = new ethers.JsonRpcProvider(url, 56, { staticNetwork: true });
+    try {
+      const req = new ethers.FetchRequest(url);
+      req.setHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36");
+      p._getConnection = () => req;
+      await p.getBlockNumber();
+      return p;
+    } catch (e) { /* try next RPC */ }
+  }
+  throw new Error("No working BSC RPC");
+}
+
+async function main() {
+  const params = new URLSearchParams(location.search);
+  let name = params.get("name") || "";
+  let addr = params.get("a") || "";
+  if (!name && !addr) {
+    $("profileName").textContent = "No profile given";
+    $("pError").textContent = "Open a profile as /agent/<name.ai> or agent.html?a=<wallet address>.";
+    return;
+  }
+  if (name) {
+    name = name.replace(/\.ai$/i, "").toLowerCase();
+    $("profileName").textContent = name + ".ai";
+    document.title = `${name}.ai — FlameID`;
+  }
+  if (CONTRACT_ADDRESS === ethers.ZeroAddress) {
+    $("pError").textContent = "Contract not deployed yet — profile data will appear after launch.";
+    return;
+  }
+  $("contractLink").textContent = CONTRACT_ADDRESS.slice(0, 10) + "…" + CONTRACT_ADDRESS.slice(-4);
+  $("contractLink").href = `${BSCSCAN}/address/${CONTRACT_ADDRESS}#code`;
+
+  try {
+    const provider = await pickWorkingProvider();
+    if (!addr) {
+      // Resolve the Agent ID name on-chain: tokenId = keccak256(label).
+      const registry = new ethers.Contract(REGISTRY_ADDRESS, REGISTRY_ABI, provider);
+      const tokenId = ethers.keccak256(ethers.toUtf8Bytes(name));
+      addr = await registry.ownerOf(tokenId);
+    }
+    if (addr === ethers.ZeroAddress) throw new Error("Agent ID has no owner");
+    $("profileAddr").textContent = addr;
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+    const [streak, score, shields, referrals, season] = await Promise.all([
+      contract.streakOf(addr),
+      contract.scoreOf(addr),
+      contract.shields(addr),
+      contract.referralCount(addr),
+      contract.seasonOf(addr),
+    ]);
+    $("pStreak").textContent = Number(streak[0]);
+    $("pLongest").textContent = Number(streak[1]);
+    $("pTotal").textContent = Number(streak[2]);
+    $("pScore").textContent = Number(score);
+    $("pShields").textContent = Number(shields);
+    $("pReferrals").textContent = Number(referrals);
+    $("pSeasonBest").textContent = Number(season[2]);
+
+    const chips = [];
+    for (const days of MILESTONES) {
+      const has = await contract.hasBadge(addr, days);
+      chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${days}-day</span>`);
+    }
+    for (const [kind, label] of SPECIAL) {
+      const has = await contract.hasSpecialBadge(addr, kind);
+      chips.push(`<span class="badge-chip ${has ? "earned" : "locked"}">${has ? "✓ " : ""}${label}</span>`);
+    }
+    $("pBadges").innerHTML = chips.join("");
+    const earned = chips.filter((c) => c.includes("earned")).length;
+
+    const displayName = name ? name + ".ai" : addr.slice(0, 10) + "…";
+    const shareText = `🔥 ${displayName} is on a ${Number(streak[0])}-day streak on FlameID — score ${Number(score)}/140, ${earned} badges. One check-in a day, no fees, no token. ${location.href}`;
+    $("shareXBtn").disabled = false;
+    $("shareXBtn").addEventListener("click", () => {
+      window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText), "_blank", "noopener");
+    });
+  } catch (e) {
+    console.warn("profile load failed:", e.message);
+    $("pError").textContent = "Could not load this profile: " + (e.reason || e.message);
+  }
+}
+
+main();
+</script>
+</body>
+</html>
