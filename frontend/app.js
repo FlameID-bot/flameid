@@ -151,6 +151,33 @@ async function loadLeaderboardAndRecent() {
           `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`).join("")
       : `<li class="muted">${t("noCheckIns")}</li>`;
 
+    // Season top 10, ranked by on-chain trust score (scoreOf) — the same
+    // ranking the 100 USDT giveaway pays out on. (The contract's
+    // seasonTop3() only returns 3, so the top 10 is computed from events.)
+    // Own try/catch + 5-at-a-time reads, so a score-read failure or a
+    // rate limit never breaks the main leaderboard above.
+    const seasonEl = $("seasonTop10");
+    try {
+      if (!rows.length) {
+        seasonEl.innerHTML = `<li class="muted">${t("noCheckIns")}</li>`;
+      } else {
+        const scored = [];
+        for (let i = 0; i < rows.length; i += 5) {
+          const batch = await Promise.all(rows.slice(i, i + 5).map(async (r) => ({
+            ...r, score: Number(await contract.scoreOf(r.addr)),
+          })));
+          scored.push(...batch);
+        }
+        scored.sort((x, y) => y.score - x.score || y.longest - x.longest || y.total - x.total);
+        seasonEl.innerHTML = scored.slice(0, 10).map((r, i) =>
+          `<li>#${i + 1} <span class="addr">${shortAddr(r.addr)}</span>` +
+          `<span class="num">${t("top10Score", { score: r.score, best: r.longest })}</span></li>`).join("");
+      }
+    } catch (e) {
+      console.warn("season top 10 failed:", e.message);
+      seasonEl.innerHTML = `<li class="muted">${t("loadSeasonFail")}</li>`;
+    }
+
     const last = events.slice(-10).reverse();
     recent.innerHTML = last.length
       ? last.map((ev) =>
@@ -160,6 +187,7 @@ async function loadLeaderboardAndRecent() {
   } catch (e) {
     console.warn("loadLeaderboardAndRecent failed:", e.message);
     lb.innerHTML = `<li class="muted">${t("loadLbFail")}</li>`;
+    $("seasonTop10").innerHTML = `<li class="muted">${t("loadSeasonFail")}</li>`;
     recent.innerHTML = `<li class="muted">${t("loadRecentFail")}</li>`;
   }
 }
@@ -266,13 +294,9 @@ async function loadSeason() {
     $("seasonStatus").textContent = active
       ? t("seasonLive", { end: endDate, days: Math.max(0, Math.ceil((SEASON_END_TS - now) / 86400)) })
       : t("seasonEnded", { end: endDate });
-    const top3 = await contract.seasonTop3();
-    $("seasonTop3").innerHTML = top3[0].map((a, i) => {
-      const best = Number(top3[1][i]);
-      return best > 0
-        ? `<li>#${i + 1} <span class="addr">${shortAddr(a)}</span><span class="num">${t("top3Streak", { best })}</span></li>`
-        : `<li>#${i + 1} <span class="muted">—</span></li>`;
-    }).join("");
+    // Season top 10 is rendered by loadLeaderboardAndRecent() (ranked by
+    // trust score); the contract's seasonTop3() is only used for the
+    // Champion claim check in loadSpecialBadges().
     if (userAddress) {
       const s = await contract.seasonOf(userAddress);
       $("mySeasonDays").textContent = Number(s[0]);
@@ -282,7 +306,6 @@ async function loadSeason() {
     }
   } catch (e) {
     console.warn("loadSeason failed:", e.message);
-    $("seasonTop3").innerHTML = `<li class="muted">${t("loadSeasonFail")}</li>`;
   }
 }
 
