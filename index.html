@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlameID — Check in every day, keep the fire alive</title>
+<meta name="description" content="Daily on-chain check-in streaks for Binance Agent ID holders. Check in once a day, build your streak, claim soulbound badges.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/webp" href="logo.webp">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <img src="logo.webp" alt="FlameID logo" class="logo">
+    <h1>Flame<span class="grad">ID</span></h1>
+    <p class="tagline">Check in once a day. Keep the fire alive. Earn badges no one can take from you.</p>
+    <p class="sub">Built for Binance Agent ID holders — every check-in is verified on-chain, no sign-ups, no fees, no admin.</p>
+    <button id="connectBtn" class="btn-primary">Connect wallet</button>
+    <p id="walletLine" class="wallet-line hidden"></p>
+  </div>
+</header>
+
+<main>
+  <section id="deployBanner" class="banner hidden">
+    The contract is not deployed yet — check back soon. The dApp will go live here as soon as the contract is on BNB Chain.
+  </section>
+
+  <section class="stats">
+    <div class="stat"><div class="stat-num" id="statStreakers">–</div><div class="stat-label">Streakers</div></div>
+    <div class="stat"><div class="stat-num" id="statCheckIns">–</div><div class="stat-label">Total check-ins</div></div>
+    <div class="stat"><div class="stat-num" id="statBadges">–</div><div class="stat-label">Badges claimed</div></div>
+    <div class="stat"><div class="stat-num" id="statTopStreak">–</div><div class="stat-label">Longest streak</div></div>
+  </section>
+
+  <section id="myStreak" class="card">
+    <h2>My streak</h2>
+    <p id="myStreakEmpty" class="muted">Connect your Agent ID wallet to see your streak.</p>
+    <div id="myStreakBody" class="hidden">
+      <div class="streak-big"><span id="myCurrent">0</span><span class="streak-unit">day streak 🔥</span></div>
+      <div class="streak-grid">
+        <div><div class="mini-num" id="myLongest">0</div><div class="mini-label">Longest streak</div></div>
+        <div><div class="mini-num" id="myTotal">0</div><div class="mini-label">Total check-ins</div></div>
+        <div><div class="mini-num" id="myShields">0</div><div class="mini-label">Streak shields 🛡️</div></div>
+        <div><div class="mini-num" id="myLast">–</div><div class="mini-label">Last check-in</div></div>
+        <div><div class="mini-num" id="myScore">0</div><div class="mini-label">Reputation score (max 140)</div></div>
+      </div>
+      <p class="muted small">Your reputation score (max 140) is built from your current streak, total check-ins, qualified referrals, account age and shields — other dApps can read it on-chain to gate features for active agents. <a href="#special">See the special badges below.</a></p>
+      <p id="shieldNote" class="muted small">A shield is spent automatically if you miss exactly one day — your streak survives. Miss 2+ days and the streak resets even with a shield.</p>
+      <p id="referrerLine" class="muted small hidden"></p>
+      <button id="checkInBtn" class="btn-primary big" disabled>Check in today</button>
+      <p id="checkInMsg" class="muted small"></p>
+    </div>
+  </section>
+
+  <section class="card" id="special">
+    <h2>Special badges</h2>
+    <p class="muted">One-off badges for the first week and for Season 1. Same rules as milestone badges: soulbound, on-chain art, free to claim — only gas.</p>
+    <p id="genesisNote" class="muted small">Loading Genesis window…</p>
+    <div id="specialGrid" class="badge-grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Season 1 — 14 days, ends 09 Dec 2026, 08:00 UTC</h2>
+    <p id="seasonStatus" class="muted">Loading season…</p>
+    <div class="streak-grid">
+      <div><div class="mini-num" id="mySeasonDays">–</div><div class="mini-label">Days checked in (season)</div></div>
+      <div><div class="mini-num" id="mySeasonStreak">–</div><div class="mini-label">Season streak</div></div>
+      <div><div class="mini-num" id="mySeasonBest">–</div><div class="mini-label">Best season streak</div></div>
+      <div><div class="mini-num" id="mySeasonClean">–</div><div class="mini-label">Best clean run (no shield)</div></div>
+    </div>
+    <p class="muted small">Survivor needs a 7-day clean run — a shield save keeps your streak but breaks the clean run. Champion goes to the top 3 season streaks, claimable after the season ends.</p>
+    <h3>Season top 3</h3>
+    <ol id="seasonTop3" class="rank-list"><li class="muted">Loading…</li></ol>
+  </section>
+
+  <section class="card">
+    <h2>Badges</h2>
+    <p class="muted">Reach a milestone streak and claim its badge — a soulbound NFT with fully on-chain artwork. Badges can never be transferred or sold.</p>
+    <div id="badgeGrid" class="badge-grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Invite friends, earn shields 🛡️</h2>
+    <p class="muted">Share your invite link. When a friend you invited reaches a 3-day streak, you earn one streak shield (max 3). A shield saves your streak if you miss exactly one day.</p>
+    <div id="inviteBox" class="hidden">
+      <div class="invite-link"><span id="inviteLink"></span><button id="copyInviteBtn" class="btn-secondary">Copy</button></div>
+      <p class="muted small">Your qualified referrals: <b id="myReferrals">0</b> (friends who reached a 3-day streak)</p>
+    </div>
+    <p id="inviteEmpty" class="muted">Connect your wallet to get your invite link.</p>
+    <h3>Top inviters</h3>
+    <ol id="topReferrers" class="rank-list"><li class="muted">Loading…</li></ol>
+  </section>
+
+  <section class="card">
+    <h2>Leaderboard — longest current streaks</h2>
+    <ol id="leaderboard" class="rank-list"><li class="muted">Loading…</li></ol>
+  </section>
+
+  <section class="card">
+    <h2>Recent check-ins</h2>
+    <ul id="recentList" class="recent-list"><li class="muted">Loading…</li></ul>
+  </section>
+
+  <!-- EDIT: giveaway terms. Update the text below when the prize decision is made.
+       This block is off-chain content only — nothing about the giveaway lives in the contract. -->
+  <section class="card giveaway">
+    <h2>🎁 Giveaway</h2>
+    <p>If this project wins a prize in the hackathon, <b>20% of the prize will be shared among the top 10 longest streaks</b> at the close of submissions — <b>09 December, 15:00 Bangkok time</b>.</p>
+    <p class="muted small">Streaks are ranked by longest streak on-chain at that moment. Winners will be contacted after the results are announced. The exact prize amount will be confirmed here once decided.</p>
+  </section>
+
+  <section class="card">
+    <h2>How it works</h2>
+    <ol class="how">
+      <li>Connect your wallet — it must hold a Binance Agent ID.</li>
+      <li>Check in once per UTC day. Check in two days in a row and your streak grows; miss a day and it resets (unless a shield saves it).</li>
+      <li>Reach 7, 14, 30, 60 or 100 days and claim that milestone's soulbound badge.</li>
+      <li>Invite friends with your link — every friend who reaches a 3-day streak earns you a shield.</li>
+      <li>Check in during the first 7 days after launch to claim the one-time Genesis badge — after that week it is locked forever.</li>
+      <li>Season 1 runs 14 days (until 09 Dec 2026, 08:00 UTC): check in 7 days in a row for the Survivor badge, or finish in the top 3 season streaks for the Champion badge.</li>
+    </ol>
+    <p class="muted small">No owner, no admin, no fees, no token. The contract only reads the Agent ID registry to verify you hold an Agent ID. Check-ins and badge claims cost only gas (value is always 0). Your reputation score (max 140) is public on-chain — other dApps can read it with <code>scoreOf(address)</code> and check activity with <code>isActiveAgent(address, minScore)</code>.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Contract: <a id="contractLink" href="#" target="_blank" rel="noopener">not deployed yet</a> (BNB Chain)</p>
+  <p>Agent ID registry: <a href="https://bscscan.com/address/0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F" target="_blank" rel="noopener">0x60B9…022F</a></p>
+  <p><a href="agent.md">For AI agents: agent.md</a> · Source code: TODO (repository link)</p>
+  <p>Your public streak profile: <code>/agent/&lt;your-name&gt;.ai</code> — shareable, no wallet needed to view.</p>
+</footer>
+
+<script src="vendor/ethers.umd.min.js"></script>
+<script src="abi.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
