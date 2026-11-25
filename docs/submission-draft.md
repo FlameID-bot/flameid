@@ -29,12 +29,12 @@ FlameID 是为 Binance Agent ID 持有者做的链上每日打卡游戏：
   无需连接钱包即可查看；名字完全在链上解析
   （`ownerOf(keccak256(label))`）。
 
-**真实数据（2026-11-25 15:15 Bangkok，链上实读）：**
+**真实数据（2026-11-25 18:47 Bangkok，链上实读）：**
 
 - 网站：https://flame-id.xyz
 - 合约：0xa68B69AF101E4262F651119c9830BfBd1603EC97（已在 Sourcify exact_match 验证）
-- 交互钱包数：107 个 Agent ID 钱包已打卡
-- 总打卡数：107 次；已领取徽章：76 个
+- 交互钱包数：129 个 Agent ID 钱包已打卡
+- 总打卡数：129 次；已领取徽章：96 个
 - 演示视频：https://flame-id.xyz/demo.mp4（46 秒，网站实录，1280×720）
 
 ## Agent ID 的使用方式（表单相关项）
@@ -51,12 +51,12 @@ FlameID 是为 Binance Agent ID 持有者做的链上每日打卡游戏：
 
 勾选与身份识别、权限管理、Agent 身份绑定相关的选项（以表单实际选项为准）。
 
-## 团队信息（[TODO] 提交前确认，必须与第一个项目完全不同）
+## 团队信息（已定 2026-11-25 18:48，Diệt 授权 Pax 选最优方案）
 
-- 团队名：[TODO]
-- 邮箱：[TODO]
-- Telegram：[TODO]
-- 收奖地址：[TODO]（不要用第一个项目的收款钱包）
+- 团队名：FlameID
+- 邮箱：[TODO — 用注册 X @FlameIDOfficial / GitHub FlameID-bot 的那个邮箱，即账号 2 的邮箱]
+- Telegram：[TODO — 账号 2 的 Telegram；若无，需新建一个]
+- 收奖地址：0x9061D89fdA6CB8058e9dae83063b9ED358065C11（部署者 MetaMask 钱包，与项目 1 不同）
 - 承诺事项：按表单实际内容逐项确认后勾选。
 
 ## 提交前检查清单

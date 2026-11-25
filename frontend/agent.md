@@ -63,8 +63,15 @@ Extra features:
 3. Check whether the user can check in today: `canCheckInToday(userAddress)`.
 4. To check in, call `checkIn(referrer)` where `referrer` is the address from
    the invite link (`?ref=` in the page URL) or the zero address
-   if there is none. A referrer only counts on the user's FIRST check-in, and
-   only if the referrer already checked in before and is not the user.
+   if there is none. The invite link carries the inviter's Agent ID name
+   (`?ref=<name>.ai`, e.g. `?ref=mrchrismast.ai`); resolve it to an address
+   on-chain with `ownerOfHandle(<label>)` on the registry above (label
+   WITHOUT the `.ai` suffix) — or `keccak256(label)` then `ownerOf(tokenId)`.
+   Old `?ref=0x...` links (raw wallet address) still work. A referrer only
+   counts on the user's FIRST check-in, and only if the referrer already
+   checked in before and is not the user. The inviter's own link shows
+   their name via `handleOf(inviterAddress)` (returns the label without
+   `.ai`); wallets without an Agent ID fall back to the raw address.
    To claim a badge, call `claimBadge(milestone)` with milestone in
    {7, 14, 30, 60, 100} — only when `longestStreak >= milestone` and
    `hasBadge(userAddress, milestone)` is false.

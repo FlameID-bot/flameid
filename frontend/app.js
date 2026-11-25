@@ -111,10 +111,27 @@ async function getLogsChunked(filter, fromBlock, toBlock) {
   return out;
 }
 
-function readReferrerFromUrl() {
+// Referrer from ?ref= : a wallet address OR an Agent ID name
+// (?ref=mrchrismast.ai). Names resolve on-chain via the registry:
+// ownerOfHandle(label) — label WITHOUT the .ai suffix — with a
+// keccak256(label) -> ownerOf fallback (same as agent.html).
+// Old ?ref=0x... links keep working.
+async function resolveReferrerFromUrl(registry) {
   const ref = new URLSearchParams(window.location.search).get("ref");
-  if (ref && ethers.isAddress(ref)) return ethers.getAddress(ref);
-  return ethers.ZeroAddress;
+  if (!ref) return ethers.ZeroAddress;
+  if (ethers.isAddress(ref)) return ethers.getAddress(ref);
+  const label = ref.replace(/\.ai$/i, "").toLowerCase().trim();
+  if (!label || !/^[a-z0-9][a-z0-9-]*$/.test(label)) return ethers.ZeroAddress;
+  try {
+    const addr = await registry.ownerOfHandle(label);
+    if (addr !== ethers.ZeroAddress) return addr;
+  } catch (e) { /* fall through to keccak fallback */ }
+  try {
+    const tokenId = ethers.keccak256(ethers.toUtf8Bytes(label));
+    return await registry.ownerOf(tokenId);
+  } catch (e) {
+    return ethers.ZeroAddress;
+  }
 }
 
 async function loadStats() {
@@ -532,8 +549,20 @@ async function connectWallet() {
     btn.textContent = t("connected");
     btn.disabled = true;
 
+    // Registry (read-only): Agent ID checks + .ai handle lookups.
+    const registry = new ethers.Contract(
+      REGISTRY_ADDRESS,
+      [
+        "function balanceOf(address) view returns (uint256)",
+        "function handleOf(address) view returns (string)",
+        "function ownerOfHandle(string) view returns (address)",
+        "function ownerOf(uint256) view returns (address)",
+      ],
+      readProvider
+    );
+
     // Referrer from ?ref= : only valid if it is not me and it already checked in.
-    const ref = readReferrerFromUrl();
+    const ref = await resolveReferrerFromUrl(registry);
     if (ref !== ethers.ZeroAddress && ref.toLowerCase() !== userAddress.toLowerCase()) {
       try {
         const refStreak = await contract.streakOf(ref);
@@ -543,18 +572,22 @@ async function connectWallet() {
       }
     }
 
-    // Invite link.
-    const link = `${window.location.origin}${window.location.pathname}?ref=${userAddress}`;
+    // Invite link: the user's .ai name when they have one
+    // (?ref=mrchrismast.ai), otherwise their wallet address.
+    // Old ?ref=0x... links keep working.
+    let inviteRef = userAddress;
+    try {
+      const handle = await registry.handleOf(userAddress);
+      if (handle) inviteRef = `${handle}.ai`;
+    } catch (e) {
+      console.warn("handle lookup failed, using address:", e.message);
+    }
+    const link = `${window.location.origin}${window.location.pathname}?ref=${inviteRef}`;
     $("inviteLink").textContent = link;
     $("inviteBox").classList.remove("hidden");
     $("inviteEmpty").classList.add("hidden");
 
     // Agent ID check.
-    const registry = new ethers.Contract(
-      REGISTRY_ADDRESS,
-      ["function balanceOf(address) view returns (uint256)"],
-      readProvider
-    );
     const bal = await registry.balanceOf(userAddress);
     if (bal === 0n) {
       noAgentId = true;
