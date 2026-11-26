@@ -25,6 +25,25 @@ const BROWSER_UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
 const LOG_WINDOW = 4000;
 
+// Boards render instantly from this precomputed file when it is fresh
+// (rebuilt every 10 minutes by scripts/build_leaderboard.js). Reading
+// ~250k blocks of eth_getLogs from every visitor's browser was the
+// reason the boards took minutes: public BSC RPCs rate-limit getLogs.
+// The live loaders below stay as the fallback when the file is missing
+// or older than this, and after connect / check-in.
+const CACHE_MAX_AGE_MS = 30 * 60 * 1000;
+
+// Multicall3 (same address on BSC): one eth_call for a whole batch of
+// view reads, instead of one round-trip per wallet. The boards used to
+// read scoreOf/handleOf/referralCount wallet-by-wallet in batches of 5,
+// which was ~90 sequential round-trips on top of the log scans — the
+// main reason the boards took a minute or more to appear.
+const MULTICALL3_ADDRESS = "0xcA11bde05977b3631167028862bE2a173976CA11";
+const MULTICALL3_ABI = [
+  "function aggregate3(tuple(address target,bool allowFailure,bytes callData)[] calls) view returns (tuple(bool success,bytes returnData)[])",
+];
+let multicall = null;
+
 const MILESTONES = [
   { days: 7, tierKey: "tierBronze", color: "#CD7F32" },
   { days: 14, tierKey: "tierSilver", color: "#C0C0C0" },
@@ -114,16 +133,50 @@ async function queryLogsFallback(filter, from, to) {
 }
 
 async function getLogsChunked(filter, fromBlock, toBlock) {
-  const out = [];
+  const ranges = [];
   for (let from = fromBlock; from <= toBlock; from += LOG_WINDOW) {
-    const to = Math.min(from + LOG_WINDOW - 1, toBlock);
-    try {
-      out.push(...(await queryLogsFallback(filter, from, to)));
-    } catch (e) {
-      console.warn(`getLogs ${from}-${to} failed on all RPCs, skipped`);
-    }
+    ranges.push([from, Math.min(from + LOG_WINDOW - 1, toBlock)]);
   }
+  // Chunks run 5 at a time: the old sequential scan was ~30 round-trips
+  // in a row, each with RPC-fallback retries — the single biggest chunk
+  // of board load time. Results are re-sorted chronologically because
+  // per-wallet aggregation below assumes ascending event order.
+  const out = [];
+  const LOG_CONCURRENCY = 5;
+  for (let i = 0; i < ranges.length; i += LOG_CONCURRENCY) {
+    const batch = await Promise.all(ranges.slice(i, i + LOG_CONCURRENCY).map(async ([from, to]) => {
+      try {
+        return await queryLogsFallback(filter, from, to);
+      } catch (e) {
+        console.warn(`getLogs ${from}-${to} failed on all RPCs, skipped`);
+        return [];
+      }
+    }));
+    for (const logs of batch) out.push(...logs);
+  }
+  out.sort((a, b) => (a.blockNumber - b.blockNumber) || (a.index - b.index));
   return out;
+}
+
+// Batch many view calls into ONE eth_call via Multicall3.
+// items: [{ target, data, decode }] — decode(bytes) -> value.
+// Returns values in order, null for any sub-call that failed, and
+// all-null when Multicall itself is unreachable — the caller then falls
+// back to plain batched reads, so a dead Multicall never breaks a board.
+async function multicallBatch(items) {
+  if (!multicall || !items.length) return items.map(() => null);
+  try {
+    const res = await multicall.aggregate3.staticCall(
+      items.map((it) => ({ target: it.target, allowFailure: true, callData: it.data }))
+    );
+    return res.map((r, i) => {
+      if (!r.success) return null;
+      try { return items[i].decode(r.returnData); } catch (e) { return null; }
+    });
+  } catch (e) {
+    console.warn("multicall failed, falling back to batched reads:", e.message);
+    return items.map(() => null);
+  }
 }
 
 // Referrer from ?ref= : a wallet address OR an Agent ID name
@@ -175,8 +228,24 @@ function fillAgentPrompt() {
 async function resolveHandles(addrs) {
   if (!readRegistry) return;
   const missing = [...new Set(addrs.map((a) => a.toLowerCase()))].filter((a) => !handleCache.has(a));
-  for (let i = 0; i < missing.length; i += 5) {
-    await Promise.all(missing.slice(i, i + 5).map(async (a) => {
+  if (!missing.length) return;
+  // One Multicall for every missing .ai name instead of one round-trip
+  // per wallet in batches of 5.
+  const regIface = new ethers.Interface(["function handleOf(address) view returns (string)"]);
+  const values = await multicallBatch(missing.map((a) => ({
+    target: REGISTRY_ADDRESS,
+    data: regIface.encodeFunctionData("handleOf", [a]),
+    decode: (ret) => regIface.decodeFunctionResult("handleOf", ret)[0],
+  })));
+  const stillMissing = [];
+  values.forEach((v, i) => {
+    if (v === null || v === undefined) stillMissing.push(missing[i]);
+    else handleCache.set(missing[i], v ? `${v}.ai` : shortAddr(missing[i]));
+  });
+  // Fallback for whatever Multicall could not answer (or if Multicall
+  // itself is down): plain reads, 5 at a time.
+  for (let i = 0; i < stillMissing.length; i += 5) {
+    await Promise.all(stillMissing.slice(i, i + 5).map(async (a) => {
       try {
         const h = await readRegistry.handleOf(a);
         handleCache.set(a, h ? `${h}.ai` : shortAddr(a));
@@ -213,6 +282,73 @@ async function loadStats() {
     $("statBadges").textContent = Number(badges);
   } catch (e) {
     console.warn("loadStats failed:", e.message);
+  }
+}
+
+async function loadBoardsFromCache() {
+  try {
+    const res = await fetch("leaderboard.json", { cache: "no-store" });
+    if (!res.ok) return false;
+    const data = await res.json();
+    const age = Date.now() - new Date(data.generatedAt).getTime();
+    if (!Number.isFinite(age) || age > CACHE_MAX_AGE_MS) return false;
+    renderBoardsFromCache(data);
+    return true;
+  } catch (e) {
+    console.warn("leaderboard.json unavailable:", e.message);
+    return false;
+  }
+}
+
+// Fill every board from the precomputed JSON (same rows, ranking and
+// labels as the live loaders, so a cached board and a live board agree).
+function renderBoardsFromCache(data) {
+  const name = (r) => r.handle || shortAddr(r.addr);
+  const me = (addr) => userAddress && addr === userAddress.toLowerCase() ? ' class="me"' : "";
+
+  $("statStreakers").textContent = Number(data.stats.streakers);
+  $("statCheckIns").textContent = Number(data.stats.checkIns);
+  $("statBadges").textContent = Number(data.stats.badges);
+  $("statTopStreak").textContent = Number(data.stats.topStreak);
+
+  $("leaderboard").innerHTML = data.streakTop10.length
+    ? data.streakTop10.map((r, i) =>
+        `<li${me(r.addr)}>#${i + 1} <span class="addr" data-addr="${r.addr}">${name(r)}</span>` +
+        `<span class="num">${r.effective}🔥 ${t("lbBest", { n: r.longest })}</span></li>`).join("")
+    : `<li class="muted">${t("noCheckIns")}</li>`;
+
+  $("seasonTop10").innerHTML = data.seasonTop10.length
+    ? data.seasonTop10.map((r, i) =>
+        `<li${me(r.addr)}>#${i + 1} <span class="addr" data-addr="${r.addr}">${name(r)}</span>` +
+        `<span class="num">${t("top10Score", { score: r.score, best: r.longest })}</span></li>`).join("")
+    : `<li class="muted">${t("noCheckIns")}</li>`;
+
+  $("topReferrers").innerHTML = data.topReferrers.length
+    ? data.topReferrers.map((r, i) => {
+        const pending = r.invited > r.count ? ` ${t("refPending", { n: r.invited - r.count })}` : "";
+        return `<li${me(r.addr)}>#${i + 1} <span class="addr" data-addr="${r.addr}">${name(r)}</span>` +
+          `<span class="num">${r.count} ${t("qualified")}${pending}</span></li>`;
+      }).join("")
+    : `<li class="muted">${t("noReferrals")}</li>`;
+
+  $("recentList").innerHTML = data.recent.length
+    ? data.recent.map((ev) =>
+        `<li><span class="addr" data-addr="${ev.addr}">${ev.handle || shortAddr(ev.addr)}</span> ` +
+        `${t("checkedIn", { streak: ev.streak, date: ev.date })}</li>`).join("")
+    : `<li class="muted">${t("recentEmpty")}</li>`;
+
+  // Your ranks, when the connected wallet is inside the cached lists.
+  // If it is not there, leave the placeholders: the live loaders fill
+  // them in after connect (the wallet may have checked in after this
+  // JSON was built).
+  if (userAddress) {
+    const si = (data.allSeasonAddrs || []).findIndex((a) => a === userAddress.toLowerCase());
+    if (si >= 0) $("myRank").textContent = t("myRank", { rank: si + 1, score: data.allSeasonScores[si] });
+    const ri = (data.allReferrerAddrs || []).findIndex((a) => a === userAddress.toLowerCase());
+    if (ri >= 0) $("myRefRank").textContent = t("myRefRank", { rank: ri + 1, count: data.allReferrerCounts[ri] });
+  } else {
+    $("myRank").textContent = t("myRankNone");
+    $("myRefRank").textContent = t("myRefRankNone");
   }
 }
 
@@ -297,12 +433,20 @@ async function loadLeaderboardAndRecent() {
         seasonEl.innerHTML = `<li class="muted">${t("noCheckIns")}</li>`;
         myRankEl.textContent = !userAddress ? t("myRankNone") : t("myRankZero");
       } else {
-        const scored = [];
-        for (let i = 0; i < rows.length; i += 5) {
-          const batch = await Promise.all(rows.slice(i, i + 5).map(async (r) => ({
-            ...r, score: Number(await contract.scoreOf(r.addr)),
-          })));
-          scored.push(...batch);
+        // One Multicall for every wallet's trust score, with a batched
+        // fallback for any wallet Multicall could not answer.
+        const scores = await multicallBatch(rows.map((r) => ({
+          target: CONTRACT_ADDRESS,
+          data: contract.interface.encodeFunctionData("scoreOf", [r.addr]),
+          decode: (ret) => Number(contract.interface.decodeFunctionResult("scoreOf", ret)[0]),
+        })));
+        const scored = rows.map((r, i) => ({ ...r, score: scores[i] }));
+        const missingScores = scored.filter((r) => r.score === null || r.score === undefined);
+        for (let i = 0; i < missingScores.length; i += 5) {
+          await Promise.all(missingScores.slice(i, i + 5).map(async (r) => {
+            try { r.score = Number(await contract.scoreOf(r.addr)); }
+            catch (e) { r.score = 0; }
+          }));
         }
         scored.sort((x, y) => y.score - x.score || y.longest - x.longest || y.total - x.total);
         seasonEl.innerHTML = scored.slice(0, 10).map((r, i) => {
@@ -359,14 +503,24 @@ async function loadTopReferrers() {
       invited.set(r, (invited.get(r) || 0) + 1);
     }
     const referrers = [...invited.keys()];
-    const counts = [];
-    for (let i = 0; i < referrers.length; i += 5) {
-      const batch = await Promise.all(referrers.slice(i, i + 5).map(async (r) => ({
-        addr: r,
-        count: Number(await contract.referralCount(r)),
-        invited: invited.get(r) || 0,
-      })));
-      counts.push(...batch);
+    // One Multicall for every referrer's qualified count, with a batched
+    // fallback for any referrer Multicall could not answer.
+    const refCounts = await multicallBatch(referrers.map((r) => ({
+      target: CONTRACT_ADDRESS,
+      data: contract.interface.encodeFunctionData("referralCount", [r]),
+      decode: (ret) => Number(contract.interface.decodeFunctionResult("referralCount", ret)[0]),
+    })));
+    const counts = referrers.map((r, i) => ({
+      addr: r,
+      count: refCounts[i],
+      invited: invited.get(r) || 0,
+    }));
+    const missingCounts = counts.filter((r) => r.count === null || r.count === undefined);
+    for (let i = 0; i < missingCounts.length; i += 5) {
+      await Promise.all(missingCounts.slice(i, i + 5).map(async (r) => {
+        try { r.count = Number(await contract.referralCount(r.addr)); }
+        catch (e) { r.count = 0; }
+      }));
     }
     // Merge the connected wallet's LIVE counts so they appear right away.
     let myQualified = 0;
@@ -673,8 +827,7 @@ async function connectWallet() {
     }
     noAgentId = false;
     await loadMyStreak();
-    await loadLeaderboardAndRecent();
-    await loadTopReferrers();
+    await Promise.all([loadLeaderboardAndRecent(), loadTopReferrers()]);
   } catch (e) {
     alert(t("connectFailed", { err: e.reason || e.message }));
     btn.disabled = false;
@@ -722,10 +875,15 @@ async function init() {
     readRegistry = new ethers.Contract(REGISTRY_ADDRESS, [
       "function handleOf(address) view returns (string)",
     ], readProvider);
-    await loadStats();
-    await loadLeaderboardAndRecent();
-    await loadTopReferrers();
-    await loadSeason();
+    multicall = new ethers.Contract(MULTICALL3_ADDRESS, MULTICALL3_ABI, readProvider);
+    // Boards first: the precomputed JSON renders instantly when fresh.
+    // The heavy live log scans only run when the cache is missing or
+    // stale — never overwrite a good cached board with a gappy live
+    // read, and never leave the page blank while RPCs are slow.
+    const cached = await loadBoardsFromCache();
+    await Promise.all(cached
+      ? [loadStats(), loadSeason()]
+      : [loadStats(), loadLeaderboardAndRecent(), loadTopReferrers(), loadSeason()]);
     renderSpecialBadges({}, {}, false);
     $("genesisNote").textContent = t("genesisConnect");
   } catch (e) {
@@ -754,9 +912,12 @@ document.addEventListener("flameid-lang", () => {
   // reset it to the new language's template).
   fillAgentPrompt();
   if (contract) {
+    // Re-render in the new language: cached board first, live scan
+    // only when the cache is missing or stale.
+    loadBoardsFromCache().then((cached) => {
+      if (!cached) { loadLeaderboardAndRecent(); loadTopReferrers(); }
+    });
     loadStats();
-    loadLeaderboardAndRecent();
-    loadTopReferrers();
     loadSeason();
     if (userAddress && !noAgentId) {
       loadMyStreak();
