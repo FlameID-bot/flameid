@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T14:43:04.899Z",
-  "generatedAtBlock": 135864486,
-  "latestBlock": 135864486,
+  "generatedAt": "2026-11-26T14:52:10.511Z",
+  "generatedAtBlock": 135865806,
+  "latestBlock": 135865806,
   "stats": {
-    "streakers": 156,
-    "checkIns": 247,
-    "badges": 121,
+    "streakers": 157,
+    "checkIns": 248,
+    "badges": 122,
     "topStreak": 2
   },
   "streakTop10": [
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0xccf59445de8633c6ff5e5105c7f560c306514e09",
+      "handle": "aruljp2211.ai",
+      "streak": 1,
+      "date": "2026-11-26"
+    },
+    {
       "addr": "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
       "handle": "minhhung05.ai",
       "streak": 2,
@@ -254,12 +260,6 @@
     {
       "addr": "0x9a6ffc8007ce723ebf61e452788a2ba53e839c4f",
       "handle": "vanheo1066.ai",
-      "streak": 2,
-      "date": "2026-11-26"
-    },
-    {
-      "addr": "0xecba8bf3f2f667c268d99255cab03fb472accaee",
-      "handle": "vanheo1047.ai",
       "streak": 2,
       "date": "2026-11-26"
     }
@@ -420,7 +420,8 @@
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
-    "0x146a8dc25afdc5af565ec9870550d7992d543ee8"
+    "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
+    "0xccf59445de8633c6ff5e5105c7f560c306514e09"
   ],
   "allSeasonAddrs": [
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
@@ -578,7 +579,8 @@
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
-    "0x146a8dc25afdc5af565ec9870550d7992d543ee8"
+    "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
+    "0xccf59445de8633c6ff5e5105c7f560c306514e09"
   ],
   "allSeasonScores": [
     5,
@@ -730,6 +732,7 @@
     3,
     3,
     3,
+    2,
     2,
     2,
     2,
