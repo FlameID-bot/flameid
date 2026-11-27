@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T15:32:17.508Z",
-  "generatedAtBlock": 136063084,
-  "latestBlock": 136063084,
+  "generatedAt": "2026-11-27T15:42:34.727Z",
+  "generatedAtBlock": 136064411,
+  "latestBlock": 136064411,
   "stats": {
     "streakers": 162,
-    "checkIns": 351,
+    "checkIns": 352,
     "badges": 124,
     "topStreak": 3
   },
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
+      "handle": "qkt.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
       "handle": "abusayem.ai",
       "streak": 3,
@@ -256,12 +262,6 @@
       "handle": "vanheo1066.ai",
       "streak": 3,
       "date": "2026-11-27"
-    },
-    {
-      "addr": "0x2cace8ff352585c7888e2d6973bfd3503291a761",
-      "handle": "vanheo1036.ai",
-      "streak": 3,
-      "date": "2026-11-27"
     }
   ],
   "allStreakAddrs": [
@@ -275,6 +275,7 @@
     "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
     "0x5313fd9a277175b681509a486d055dc95d207a6f",
+    "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
@@ -351,7 +352,6 @@
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
-    "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -442,6 +442,7 @@
     "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
     "0x5313fd9a277175b681509a486d055dc95d207a6f",
+    "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
@@ -515,7 +516,6 @@
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
-    "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -679,7 +679,7 @@
     8,
     8,
     8,
-    6,
+    8,
     6,
     6,
     6,
