@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-27T14:22:15.991Z",
-  "generatedAtBlock": 136053756,
-  "latestBlock": 136053756,
+  "generatedAt": "2026-11-27T14:32:19.550Z",
+  "generatedAtBlock": 136055100,
+  "latestBlock": 136055100,
   "stats": {
     "streakers": 162,
     "checkIns": 350,
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0xf2b5d4794338396458386923294e052c9dbea3df",
+      "handle": "tge2026.ai",
+      "streak": 1,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
       "handle": "brendatrinh.ai",
       "streak": 3,
@@ -254,12 +260,6 @@
     {
       "addr": "0xca98ba15a720262d294bda791ab14e7ef5ac9f9b",
       "handle": "anhyeuem.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0x4caa9fc3c14ff028b620d88b0aba0a629423edc1",
-      "handle": "thangvo.ai",
       "streak": 3,
       "date": "2026-11-27"
     }
@@ -374,6 +374,7 @@
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
+    "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
     "0x61e4ec23b38b57122c2e0884132aef7712063a3c",
     "0x92e05367e39f141cd2c914ecf02533d28e504000",
@@ -588,7 +589,8 @@
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
-    "0x31d489b2dcde096e1c8b373143d316e910fa36ab"
+    "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
+    "0xf2b5d4794338396458386923294e052c9dbea3df"
   ],
   "allSeasonScores": [
     15,
@@ -749,6 +751,7 @@
     3,
     3,
     3,
+    2,
     2,
     2,
     2
