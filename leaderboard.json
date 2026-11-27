@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T02:22:18.464Z",
-  "generatedAtBlock": 135957785,
-  "latestBlock": 135957785,
+  "generatedAt": "2026-11-27T02:32:31.447Z",
+  "generatedAtBlock": 135959117,
+  "latestBlock": 135959117,
   "stats": {
     "streakers": 159,
-    "checkIns": 326,
+    "checkIns": 327,
     "badges": 123,
     "topStreak": 3
   },
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0xb9629f4154648be654833978ed7b87037428c710",
+      "handle": "zeeke.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0x0b4b3b70a1b96721bd46f2b0bfe22ea556342217",
       "handle": "jihad896.ai",
       "streak": 3,
@@ -256,12 +262,6 @@
       "handle": "iotex.ai",
       "streak": 3,
       "date": "2026-11-27"
-    },
-    {
-      "addr": "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
-      "handle": "jsraaa.ai",
-      "streak": 3,
-      "date": "2026-11-27"
     }
   ],
   "allStreakAddrs": [
@@ -311,6 +311,7 @@
     "0x048ceb2060aad92249341d789e025564160157fb",
     "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
     "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
+    "0xb9629f4154648be654833978ed7b87037428c710",
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
@@ -348,7 +349,6 @@
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x948b62d9fe509f6e9270bdc4bc061f5b970a0955",
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
-    "0xb9629f4154648be654833978ed7b87037428c710",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
@@ -472,6 +472,7 @@
     "0x048ceb2060aad92249341d789e025564160157fb",
     "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
     "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
+    "0xb9629f4154648be654833978ed7b87037428c710",
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
@@ -510,7 +511,6 @@
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x948b62d9fe509f6e9270bdc4bc061f5b970a0955",
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
-    "0xb9629f4154648be654833978ed7b87037428c710",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
@@ -654,7 +654,7 @@
     8,
     8,
     8,
-    6,
+    8,
     6,
     6,
     6,
