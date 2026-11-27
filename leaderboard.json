@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T02:02:29.329Z",
-  "generatedAtBlock": 135955118,
-  "latestBlock": 135955118,
+  "generatedAt": "2026-11-27T02:12:11.885Z",
+  "generatedAtBlock": 135956454,
+  "latestBlock": 135956454,
   "stats": {
     "streakers": 159,
-    "checkIns": 322,
+    "checkIns": 324,
     "badges": 123,
     "topStreak": 3
   },
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0x048ceb2060aad92249341d789e025564160157fb",
+      "handle": "molking.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
+      "addr": "0xd601a839588d9761d663ee6dc478615a6c2e7589",
+      "handle": "elonmusktrump.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
       "handle": "icapt.ai",
       "streak": 3,
@@ -250,18 +262,6 @@
       "handle": "guli666.ai",
       "streak": 3,
       "date": "2026-11-27"
-    },
-    {
-      "addr": "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
-      "handle": "guli444.ai",
-      "streak": 2,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
-      "handle": "guli111.ai",
-      "streak": 3,
-      "date": "2026-11-27"
     }
   ],
   "allStreakAddrs": [
@@ -297,6 +297,7 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xd1d668155e1dc1c8a85efc12b228e5360c30b2ae",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
+    "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0xccfaa6a7dbc37957c262bbf262765d2283d1c3b3",
     "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
     "0x798c87dc6f9ce1df9944a42c522013f22809397c",
@@ -307,6 +308,7 @@
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
+    "0x048ceb2060aad92249341d789e025564160157fb",
     "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
     "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
@@ -331,7 +333,6 @@
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
-    "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
     "0xfc8b7ad43b7f407d659b72588f4fb197402cf9ce",
     "0xecba8bf3f2f667c268d99255cab03fb472accaee",
@@ -344,7 +345,6 @@
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x948b62d9fe509f6e9270bdc4bc061f5b970a0955",
-    "0x048ceb2060aad92249341d789e025564160157fb",
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
     "0xb9629f4154648be654833978ed7b87037428c710",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
@@ -459,6 +459,7 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xd1d668155e1dc1c8a85efc12b228e5360c30b2ae",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
+    "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0xccfaa6a7dbc37957c262bbf262765d2283d1c3b3",
     "0x798c87dc6f9ce1df9944a42c522013f22809397c",
     "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
@@ -468,6 +469,7 @@
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
+    "0x048ceb2060aad92249341d789e025564160157fb",
     "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
     "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
@@ -493,7 +495,6 @@
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
-    "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
     "0xfc8b7ad43b7f407d659b72588f4fb197402cf9ce",
     "0xecba8bf3f2f667c268d99255cab03fb472accaee",
@@ -506,7 +507,6 @@
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x948b62d9fe509f6e9270bdc4bc061f5b970a0955",
-    "0x048ceb2060aad92249341d789e025564160157fb",
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
     "0xb9629f4154648be654833978ed7b87037428c710",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
@@ -650,8 +650,8 @@
     8,
     8,
     8,
-    6,
-    6,
+    8,
+    8,
     6,
     6,
     6,
