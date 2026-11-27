@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T01:02:10.685Z",
-  "generatedAtBlock": 135947120,
-  "latestBlock": 135947120,
+  "generatedAt": "2026-11-27T01:12:22.365Z",
+  "generatedAtBlock": 135948454,
+  "latestBlock": 135948454,
   "stats": {
     "streakers": 159,
-    "checkIns": 303,
+    "checkIns": 309,
     "badges": 123,
     "topStreak": 3
   },
@@ -89,6 +89,13 @@
       "total": 3
     },
     {
+      "addr": "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
+      "handle": "naoh.ai",
+      "score": 10,
+      "longest": 3,
+      "total": 3
+    },
+    {
       "addr": "0xe0ef50928e36b5538b705b0860e8e45705971a07",
       "handle": "xiaozhang0113.ai",
       "score": 8,
@@ -143,13 +150,6 @@
       "score": 8,
       "longest": 3,
       "total": 3
-    },
-    {
-      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
-      "handle": "jinder888.ai",
-      "score": 8,
-      "longest": 3,
-      "total": 3
     }
   ],
   "topReferrers": [
@@ -166,6 +166,12 @@
       "invited": 1
     },
     {
+      "addr": "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
+      "handle": "naoh.ai",
+      "count": 1,
+      "invited": 1
+    },
+    {
       "addr": "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
       "handle": "guli520.ai",
       "count": 0,
@@ -176,12 +182,6 @@
       "handle": "cunong.ai",
       "count": 0,
       "invited": 4
-    },
-    {
-      "addr": "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-      "handle": "naoh.ai",
-      "count": 0,
-      "invited": 1
     },
     {
       "addr": "0x241fe223d86ee674d066b2cd9437abbcc737287b",
@@ -203,6 +203,36 @@
     }
   ],
   "recent": [
+    {
+      "addr": "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
+      "handle": "tungzu89.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
+      "addr": "0xde1e87cc48151f324ee21a052688aba276595305",
+      "handle": "chingo.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
+      "addr": "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
+      "handle": "naoh.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
+      "addr": "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
+      "handle": "brojeann.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
+      "addr": "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
+      "handle": "lanzking.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
     {
       "addr": "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
       "handle": "maineou.ai",
@@ -232,36 +262,6 @@
       "handle": "daij99.ai",
       "streak": 3,
       "date": "2026-11-27"
-    },
-    {
-      "addr": "0x71e78961248f6b6a15a7785e632ae13860b65299",
-      "handle": "elih.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0xa04c072ea8333b108cfe0b877b731aa2ec54df90",
-      "handle": "xuna.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
-      "handle": "heineken.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
-      "handle": "hayzl.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
-      "handle": "vpb.ai",
-      "streak": 3,
-      "date": "2026-11-27"
     }
   ],
   "allStreakAddrs": [
@@ -278,6 +278,9 @@
     "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
+    "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
+    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
+    "0xde1e87cc48151f324ee21a052688aba276595305",
     "0x7b71fa1569adb83e4434d6b95fcb52be879206ed",
     "0xda41b91a7604f5dd08c375929e8b2ff474c885a0",
     "0xa04c072ea8333b108cfe0b877b731aa2ec54df90",
@@ -306,17 +309,16 @@
     "0x4f10ebf3f3d3c48f39dd7c6e0f919552acf0464c",
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
+    "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
     "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
     "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
     "0xfce25b664db7f56d47e58c489e510b01db8f542f",
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
+    "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
-    "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
-    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-    "0xde1e87cc48151f324ee21a052688aba276595305",
     "0xa13a9efa0317cd89aa8de695aa923a01a9b35e0c",
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
@@ -354,13 +356,11 @@
     "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x7c87f1a9e539dc79e1354121a64b8cf31d04cb4e",
     "0x4c67fd636d300e2ceeb21e08d854f0a381a20195",
-    "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
     "0x0b4b3b70a1b96721bd46f2b0bfe22ea556342217",
     "0xc725c4a52032780ed7b751f37db2b72f0f30abc2",
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
-    "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xda5a2809e1454144f8583728fee9818f65018346",
@@ -427,6 +427,7 @@
   ],
   "allSeasonAddrs": [
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
+    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
@@ -439,6 +440,8 @@
     "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
+    "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
+    "0xde1e87cc48151f324ee21a052688aba276595305",
     "0x7b71fa1569adb83e4434d6b95fcb52be879206ed",
     "0xda41b91a7604f5dd08c375929e8b2ff474c885a0",
     "0xa04c072ea8333b108cfe0b877b731aa2ec54df90",
@@ -467,18 +470,18 @@
     "0x4f10ebf3f3d3c48f39dd7c6e0f919552acf0464c",
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
+    "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
     "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
     "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
     "0xfce25b664db7f56d47e58c489e510b01db8f542f",
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
+    "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
+    "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
-    "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
-    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-    "0xde1e87cc48151f324ee21a052688aba276595305",
     "0xa13a9efa0317cd89aa8de695aa923a01a9b35e0c",
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
@@ -512,16 +515,13 @@
     "0xfde31b640ab351a8d2db450abad82ac042f1ea34",
     "0xed8b69a2653160c92b3faeaf772e601800660d7d",
     "0x4caa9fc3c14ff028b620d88b0aba0a629423edc1",
-    "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x7c87f1a9e539dc79e1354121a64b8cf31d04cb4e",
     "0x4c67fd636d300e2ceeb21e08d854f0a381a20195",
-    "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
     "0x0b4b3b70a1b96721bd46f2b0bfe22ea556342217",
     "0xc725c4a52032780ed7b751f37db2b72f0f30abc2",
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
-    "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
@@ -588,6 +588,7 @@
   ],
   "allSeasonScores": [
     10,
+    10,
     8,
     8,
     8,
@@ -634,12 +635,11 @@
     8,
     8,
     8,
-    6,
-    6,
-    6,
-    6,
-    6,
-    6,
+    8,
+    8,
+    8,
+    8,
+    8,
     6,
     6,
     6,
@@ -750,9 +750,9 @@
   "allReferrerAddrs": [
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
+    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
     "0x9c292230bfc461a6e1f1f683183db7e6c98af8c5",
-    "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0x241fe223d86ee674d066b2cd9437abbcc737287b",
     "0xd075cd8a23961fd6817e484b5759430123077654",
     "0x53502c26d3844703b7216beb211d4e2cfd122541"
@@ -760,7 +760,7 @@
   "allReferrerCounts": [
     1,
     1,
-    0,
+    1,
     0,
     0,
     0,
