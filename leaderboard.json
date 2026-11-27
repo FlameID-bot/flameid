@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-27T03:02:30.882Z",
-  "generatedAtBlock": 135963119,
-  "latestBlock": 135963119,
+  "generatedAt": "2026-11-27T03:12:09.363Z",
+  "generatedAtBlock": 135964449,
+  "latestBlock": 135964449,
   "stats": {
     "streakers": 159,
     "checkIns": 333,
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
+      "handle": "nvidiacorp.ai",
+      "streak": 2,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
       "handle": "dicboss.ai",
       "streak": 3,
@@ -254,12 +260,6 @@
     {
       "addr": "0x048ceb2060aad92249341d789e025564160157fb",
       "handle": "molking.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0xd601a839588d9761d663ee6dc478615a6c2e7589",
-      "handle": "elonmusktrump.ai",
       "streak": 3,
       "date": "2026-11-27"
     }
@@ -362,13 +362,13 @@
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
+    "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0xda5a2809e1454144f8583728fee9818f65018346",
-    "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0x0f61e09099feab1b39cddf9eec3e537b7929ebc2",
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
@@ -523,12 +523,12 @@
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
+    "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
-    "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
     "0x61e4ec23b38b57122c2e0884132aef7712063a3c",
     "0x92e05367e39f141cd2c914ecf02533d28e504000",
