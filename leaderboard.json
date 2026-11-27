@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T02:42:28.863Z",
-  "generatedAtBlock": 135960450,
-  "latestBlock": 135960450,
+  "generatedAt": "2026-11-27T02:52:33.712Z",
+  "generatedAtBlock": 135961779,
+  "latestBlock": 135961779,
   "stats": {
     "streakers": 159,
-    "checkIns": 331,
+    "checkIns": 332,
     "badges": 123,
     "topStreak": 3
   },
@@ -89,6 +89,13 @@
       "total": 3
     },
     {
+      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
+      "handle": "dicboss.ai",
+      "score": 12,
+      "longest": 3,
+      "total": 3
+    },
+    {
       "addr": "0x91633ae907ee21070d00e7efe4e5ee770095b811",
       "handle": "thanhtung93.ai",
       "score": 10,
@@ -101,13 +108,6 @@
       "score": 10,
       "longest": 3,
       "total": 3
-    },
-    {
-      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
-      "handle": "dicboss.ai",
-      "score": 10,
-      "longest": 2,
-      "total": 2
     },
     {
       "addr": "0xe0ef50928e36b5538b705b0860e8e45705971a07",
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
+      "handle": "dicboss.ai",
+      "streak": 3,
+      "date": "2026-11-27"
+    },
+    {
       "addr": "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
       "handle": "yan520.ai",
       "streak": 2,
@@ -254,12 +260,6 @@
     {
       "addr": "0xd601a839588d9761d663ee6dc478615a6c2e7589",
       "handle": "elonmusktrump.ai",
-      "streak": 3,
-      "date": "2026-11-27"
-    },
-    {
-      "addr": "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
-      "handle": "icapt.ai",
       "streak": 3,
       "date": "2026-11-27"
     }
@@ -316,6 +316,7 @@
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
+    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
@@ -353,7 +354,6 @@
     "0x948b62d9fe509f6e9270bdc4bc061f5b970a0955",
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
-    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xa0558776a5c971ccc8c229f267e526e9ba6509bf",
     "0xe6c8c7998a2c2690fefa8795a92293b02cf033fa",
     "0xfde31b640ab351a8d2db450abad82ac042f1ea34",
@@ -427,9 +427,9 @@
   ],
   "allSeasonAddrs": [
     "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
+    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
@@ -588,7 +588,7 @@
   ],
   "allSeasonScores": [
     15,
-    10,
+    12,
     10,
     10,
     8,
