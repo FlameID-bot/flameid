@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T14:02:42.619Z",
-  "generatedAtBlock": 136243012,
-  "latestBlock": 136243012,
+  "generatedAt": "2026-11-28T14:12:18.800Z",
+  "generatedAtBlock": 136244342,
+  "latestBlock": 136244342,
   "stats": {
     "streakers": 166,
-    "checkIns": 445,
+    "checkIns": 446,
     "badges": 125,
     "topStreak": 4
   },
@@ -12,6 +12,13 @@
     {
       "addr": "0xe0ef50928e36b5538b705b0860e8e45705971a07",
       "handle": "xiaozhang0113.ai",
+      "effective": 4,
+      "longest": 4,
+      "total": 4
+    },
+    {
+      "addr": "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
+      "handle": "giraffi.ai",
       "effective": 4,
       "longest": 4,
       "total": 4
@@ -71,13 +78,6 @@
       "effective": 4,
       "longest": 4,
       "total": 4
-    },
-    {
-      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
-      "handle": "jinder888.ai",
-      "effective": 4,
-      "longest": 4,
-      "total": 4
     }
   ],
   "seasonTop10": [
@@ -117,6 +117,13 @@
       "total": 4
     },
     {
+      "addr": "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
+      "handle": "giraffi.ai",
+      "score": 11,
+      "longest": 4,
+      "total": 4
+    },
+    {
       "addr": "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
       "handle": "apples.ai",
       "score": 11,
@@ -140,13 +147,6 @@
     {
       "addr": "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
       "handle": "minhhung05.ai",
-      "score": 11,
-      "longest": 4,
-      "total": 4
-    },
-    {
-      "addr": "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
-      "handle": "hp1992.ai",
       "score": 11,
       "longest": 4,
       "total": 4
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
+      "handle": "giraffi.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0x1ef88cec43ce7b8528275f03944b84964ef893b7",
       "handle": "jasmine5ty.ai",
       "streak": 1,
@@ -256,16 +262,11 @@
       "handle": "anhyeuem.ai",
       "streak": 4,
       "date": "2026-11-28"
-    },
-    {
-      "addr": "0xecba8bf3f2f667c268d99255cab03fb472accaee",
-      "handle": "vanheo1047.ai",
-      "streak": 4,
-      "date": "2026-11-28"
     }
   ],
   "allStreakAddrs": [
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
+    "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
@@ -341,7 +342,6 @@
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
-    "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
     "0x7b71fa1569adb83e4434d6b95fcb52be879206ed",
@@ -438,6 +438,7 @@
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
+    "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0xf8295d390864ae7be6b0b4bbc24ca35f7bdba241",
@@ -509,7 +510,6 @@
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
-    "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
     "0x7b71fa1569adb83e4434d6b95fcb52be879206ed",
@@ -677,7 +677,7 @@
     11,
     11,
     11,
-    9,
+    11,
     9,
     9,
     9,
