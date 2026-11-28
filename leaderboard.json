@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-28T06:12:17.685Z",
-  "generatedAtBlock": 136180370,
-  "latestBlock": 136180370,
+  "generatedAt": "2026-11-28T06:22:36.624Z",
+  "generatedAtBlock": 136181701,
+  "latestBlock": 136181701,
   "stats": {
     "streakers": 165,
     "checkIns": 429,
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7",
+      "handle": "tvc99.ai",
+      "streak": 1,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xadc6857228855d8e5d64001c52261a3706420d40",
       "handle": "vc99.ai",
       "streak": 1,
@@ -255,12 +261,6 @@
       "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
       "handle": "dicboss.ai",
       "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
-      "handle": "yan520.ai",
-      "streak": 3,
       "date": "2026-11-28"
     }
   ],
@@ -367,6 +367,7 @@
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
     "0xadc6857228855d8e5d64001c52261a3706420d40",
+    "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -594,7 +595,8 @@
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
-    "0xadc6857228855d8e5d64001c52261a3706420d40"
+    "0xadc6857228855d8e5d64001c52261a3706420d40",
+    "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7"
   ],
   "allSeasonScores": [
     19,
@@ -759,6 +761,7 @@
     4,
     3,
     3,
+    2,
     2,
     2
   ],
