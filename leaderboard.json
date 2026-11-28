@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T02:32:09.351Z",
-  "generatedAtBlock": 136151049,
-  "latestBlock": 136151049,
+  "generatedAt": "2026-11-28T02:42:14.093Z",
+  "generatedAtBlock": 136152379,
+  "latestBlock": 136152379,
   "stats": {
     "streakers": 162,
-    "checkIns": 416,
+    "checkIns": 419,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0xed8b69a2653160c92b3faeaf772e601800660d7d",
+      "handle": "tiantian1314.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
+      "handle": "yenboss.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
       "handle": "farris.ai",
       "streak": 3,
@@ -248,18 +260,6 @@
     {
       "addr": "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
       "handle": "guli666.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
-      "handle": "guli444.ai",
-      "streak": 3,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
-      "handle": "guli111.ai",
       "streak": 4,
       "date": "2026-11-28"
     }
@@ -308,7 +308,9 @@
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
+    "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
+    "0xed8b69a2653160c92b3faeaf772e601800660d7d",
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
@@ -341,12 +343,10 @@
     "0xb9629f4154648be654833978ed7b87037428c710",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
-    "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
     "0xa0558776a5c971ccc8c229f267e526e9ba6509bf",
     "0xe6c8c7998a2c2690fefa8795a92293b02cf033fa",
     "0xfde31b640ab351a8d2db450abad82ac042f1ea34",
-    "0xed8b69a2653160c92b3faeaf772e601800660d7d",
     "0x4f10ebf3f3d3c48f39dd7c6e0f919552acf0464c",
     "0x4caa9fc3c14ff028b620d88b0aba0a629423edc1",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
@@ -473,7 +473,9 @@
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
+    "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
+    "0xed8b69a2653160c92b3faeaf772e601800660d7d",
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
@@ -505,12 +507,10 @@
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0xb9629f4154648be654833978ed7b87037428c710",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
-    "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
     "0xa0558776a5c971ccc8c229f267e526e9ba6509bf",
     "0xe6c8c7998a2c2690fefa8795a92293b02cf033fa",
     "0xfde31b640ab351a8d2db450abad82ac042f1ea34",
-    "0xed8b69a2653160c92b3faeaf772e601800660d7d",
     "0x4f10ebf3f3d3c48f39dd7c6e0f919552acf0464c",
     "0x4caa9fc3c14ff028b620d88b0aba0a629423edc1",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
@@ -521,6 +521,7 @@
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
+    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
@@ -531,7 +532,6 @@
     "0x7c87f1a9e539dc79e1354121a64b8cf31d04cb4e",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
     "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
-    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
@@ -650,8 +650,8 @@
     11,
     11,
     11,
-    9,
-    9,
+    11,
+    11,
     9,
     9,
     9,
@@ -685,6 +685,7 @@
     8,
     8,
     8,
+    8,
     7,
     7,
     7,
@@ -694,7 +695,6 @@
     7,
     7,
     7,
-    6,
     6,
     5,
     5,
