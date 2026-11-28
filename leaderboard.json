@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T00:52:10.561Z",
-  "generatedAtBlock": 136137717,
-  "latestBlock": 136137717,
+  "generatedAt": "2026-11-28T01:02:27.248Z",
+  "generatedAtBlock": 136139048,
+  "latestBlock": 136139048,
   "stats": {
     "streakers": 162,
-    "checkIns": 394,
+    "checkIns": 396,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
+      "handle": "abusayem.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
+      "handle": "maineou.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
       "handle": "heineken.ai",
       "streak": 4,
@@ -250,18 +262,6 @@
       "handle": "nhatlam16.ai",
       "streak": 4,
       "date": "2026-11-28"
-    },
-    {
-      "addr": "0x91633ae907ee21070d00e7efe4e5ee770095b811",
-      "handle": "thanhtung93.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
-      "handle": "leethyb.ai",
-      "streak": 4,
-      "date": "2026-11-28"
     }
   ],
   "allStreakAddrs": [
@@ -303,7 +303,9 @@
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
     "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
+    "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0xfce25b664db7f56d47e58c489e510b01db8f542f",
+    "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
@@ -344,13 +346,11 @@
     "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x4c67fd636d300e2ceeb21e08d854f0a381a20195",
     "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
-    "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
     "0x0b4b3b70a1b96721bd46f2b0bfe22ea556342217",
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
     "0xc725c4a52032780ed7b751f37db2b72f0f30abc2",
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
-    "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
@@ -469,7 +469,9 @@
     "0x51b5a6d3e33d6f837bab23561bfc8f8c4f9bf1aa",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
     "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
+    "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0xfce25b664db7f56d47e58c489e510b01db8f542f",
+    "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
@@ -508,13 +510,11 @@
     "0x74f2f1aacce90a56033de104caac15d576433d2d",
     "0x4c67fd636d300e2ceeb21e08d854f0a381a20195",
     "0xa20f7876332cb4eed3dd2b8401eca8ade1446b0d",
-    "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
     "0x330ab5ff2cc3f12184cea3d469d71e023774532a",
     "0x0b4b3b70a1b96721bd46f2b0bfe22ea556342217",
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
     "0xc725c4a52032780ed7b751f37db2b72f0f30abc2",
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
-    "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
@@ -635,8 +635,8 @@
     11,
     11,
     11,
-    9,
-    9,
+    11,
+    11,
     9,
     9,
     9,
