@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T00:12:20.004Z",
-  "generatedAtBlock": 136132402,
-  "latestBlock": 136132402,
+  "generatedAt": "2026-11-28T00:22:09.207Z",
+  "generatedAtBlock": 136133718,
+  "latestBlock": 136133718,
   "stats": {
     "streakers": 162,
-    "checkIns": 372,
+    "checkIns": 373,
     "badges": 124,
     "topStreak": 4
   },
@@ -19,6 +19,13 @@
     {
       "addr": "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
       "handle": "hp1992.ai",
+      "effective": 4,
+      "longest": 4,
+      "total": 4
+    },
+    {
+      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
+      "handle": "jinder888.ai",
       "effective": 4,
       "longest": 4,
       "total": 4
@@ -71,13 +78,6 @@
       "effective": 4,
       "longest": 4,
       "total": 4
-    },
-    {
-      "addr": "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
-      "handle": "linhda.ai",
-      "effective": 4,
-      "longest": 4,
-      "total": 4
     }
   ],
   "seasonTop10": [
@@ -105,6 +105,13 @@
     {
       "addr": "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
       "handle": "hp1992.ai",
+      "score": 11,
+      "longest": 4,
+      "total": 4
+    },
+    {
+      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
+      "handle": "jinder888.ai",
       "score": 11,
       "longest": 4,
       "total": 4
@@ -140,13 +147,6 @@
     {
       "addr": "0xfe90d44cff5674fcfda7bd18961786f7fe321b74",
       "handle": "tuan98.ai",
-      "score": 11,
-      "longest": 4,
-      "total": 4
-    },
-    {
-      "addr": "0xb5ac22ea1f7d7420aa03b70dad3717cf9534d7a1",
-      "handle": "shinbaby.ai",
       "score": 11,
       "longest": 4,
       "total": 4
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
+      "handle": "brendatrinh.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
+      "handle": "jinder888.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xccf59445de8633c6ff5e5105c7f560c306514e09",
       "handle": "aruljp2211.ai",
       "streak": 3,
@@ -250,23 +262,12 @@
       "handle": "iotex.ai",
       "streak": 4,
       "date": "2026-11-28"
-    },
-    {
-      "addr": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
-      "handle": "ganggangtrader.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
-      "handle": "hp1992.ai",
-      "streak": 4,
-      "date": "2026-11-28"
     }
   ],
   "allStreakAddrs": [
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
+    "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
     "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
@@ -277,6 +278,7 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
     "0xab2f7dc213526cec86ea5612b8f847b2880d9996",
+    "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
@@ -290,7 +292,6 @@
     "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
     "0x5313fd9a277175b681509a486d055dc95d207a6f",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
-    "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
@@ -319,7 +320,6 @@
     "0x49d937de3064889204bd56069bae5ae56376eb14",
     "0xca98ba15a720262d294bda791ab14e7ef5ac9f9b",
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
-    "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
     "0x048ceb2060aad92249341d789e025564160157fb",
@@ -433,6 +433,7 @@
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
+    "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
     "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
@@ -443,12 +444,12 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
     "0xab2f7dc213526cec86ea5612b8f847b2880d9996",
+    "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x90a55b663170557b73fafab572a46d7e0230df18",
     "0xfce25b664db7f56d47e58c489e510b01db8f542f",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
-    "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
@@ -484,7 +485,6 @@
     "0x49d937de3064889204bd56069bae5ae56376eb14",
     "0xca98ba15a720262d294bda791ab14e7ef5ac9f9b",
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
-    "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
     "0x048ceb2060aad92249341d789e025564160157fb",
@@ -614,7 +614,7 @@
     11,
     11,
     11,
-    9,
+    11,
     9,
     9,
     9,
