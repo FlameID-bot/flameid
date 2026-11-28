@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T01:22:11.825Z",
-  "generatedAtBlock": 136141717,
-  "latestBlock": 136141717,
+  "generatedAt": "2026-11-28T01:32:10.207Z",
+  "generatedAtBlock": 136143047,
+  "latestBlock": 136143047,
   "stats": {
     "streakers": 162,
-    "checkIns": 403,
+    "checkIns": 409,
     "badges": 124,
     "topStreak": 4
   },
@@ -84,9 +84,9 @@
     {
       "addr": "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
       "handle": "guli520.ai",
-      "score": 16,
-      "longest": 3,
-      "total": 3
+      "score": 19,
+      "longest": 4,
+      "total": 4
     },
     {
       "addr": "0x91633ae907ee21070d00e7efe4e5ee770095b811",
@@ -156,7 +156,7 @@
     {
       "addr": "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
       "handle": "guli520.ai",
-      "count": 4,
+      "count": 5,
       "invited": 5
     },
     {
@@ -204,6 +204,36 @@
   ],
   "recent": [
     {
+      "addr": "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
+      "handle": "guli444.ai",
+      "streak": 3,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
+      "handle": "guli111.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x798c87dc6f9ce1df9944a42c522013f22809397c",
+      "handle": "guli888.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
+      "handle": "guli520.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
+      "handle": "jsraaa.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
       "handle": "icapt.ai",
       "streak": 4,
@@ -230,36 +260,6 @@
     {
       "addr": "0xde1e87cc48151f324ee21a052688aba276595305",
       "handle": "chingo.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-      "handle": "naoh.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
-      "handle": "lanzking.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
-      "handle": "abusayem.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xcad6e229ad2e37661b8cc5034d8a8ce176b1b7ea",
-      "handle": "maineou.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xae0c68b5059150e3e69cf3e9836c0152c8ee4c2f",
-      "handle": "heineken.ai",
       "streak": 4,
       "date": "2026-11-28"
     }
@@ -292,7 +292,11 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xd1d668155e1dc1c8a85efc12b228e5360c30b2ae",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
+    "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
+    "0x798c87dc6f9ce1df9944a42c522013f22809397c",
+    "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
     "0xab2f7dc213526cec86ea5612b8f847b2880d9996",
+    "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
@@ -321,9 +325,6 @@
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0xccfaa6a7dbc37957c262bbf262765d2283d1c3b3",
-    "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
-    "0x798c87dc6f9ce1df9944a42c522013f22809397c",
-    "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
     "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
     "0x30588cfbce27269d4e76128c7ed934e270c9c927",
     "0xfc8b7ad43b7f407d659b72588f4fb197402cf9ce",
@@ -333,7 +334,6 @@
     "0x9a6ffc8007ce723ebf61e452788a2ba53e839c4f",
     "0x49d937de3064889204bd56069bae5ae56376eb14",
     "0xca98ba15a720262d294bda791ab14e7ef5ac9f9b",
-    "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x048ceb2060aad92249341d789e025564160157fb",
     "0xb9629f4154648be654833978ed7b87037428c710",
@@ -355,10 +355,10 @@
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
+    "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
-    "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
@@ -458,7 +458,10 @@
     "0x6fcbcf98c75fe0c4241ad7c8dbaf84e8ba7870d4",
     "0xd1d668155e1dc1c8a85efc12b228e5360c30b2ae",
     "0xf4ea26675e6ed4dd31562303fde9e966b3186713",
+    "0x798c87dc6f9ce1df9944a42c522013f22809397c",
+    "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
     "0xab2f7dc213526cec86ea5612b8f847b2880d9996",
+    "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
@@ -478,6 +481,7 @@
     "0xeeb4fa5dd62afa7cea034d89fc3de85bc8f782e1",
     "0xd3e2e8b3c25639d8e4c98725ee42f5441345568d",
     "0x70ce76b00ba4be36c4bcf4ea70513a12cdbd3a60",
+    "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
@@ -487,9 +491,6 @@
     "0x8bb7e6f73beafbc1f13200ab1bfa03152fa8aaa2",
     "0xd601a839588d9761d663ee6dc478615a6c2e7589",
     "0xccfaa6a7dbc37957c262bbf262765d2283d1c3b3",
-    "0x798c87dc6f9ce1df9944a42c522013f22809397c",
-    "0xc8e6a46c8779eacabc76e2abc2335e02f220d0cd",
-    "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
     "0x30588cfbce27269d4e76128c7ed934e270c9c927",
     "0xfc8b7ad43b7f407d659b72588f4fb197402cf9ce",
     "0xecba8bf3f2f667c268d99255cab03fb472accaee",
@@ -498,7 +499,6 @@
     "0x9a6ffc8007ce723ebf61e452788a2ba53e839c4f",
     "0x49d937de3064889204bd56069bae5ae56376eb14",
     "0xca98ba15a720262d294bda791ab14e7ef5ac9f9b",
-    "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x048ceb2060aad92249341d789e025564160157fb",
     "0xb9629f4154648be654833978ed7b87037428c710",
@@ -519,6 +519,7 @@
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
+    "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -531,7 +532,6 @@
     "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
     "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
-    "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
     "0x61e4ec23b38b57122c2e0884132aef7712063a3c",
@@ -593,7 +593,7 @@
     "0xf2b5d4794338396458386923294e052c9dbea3df"
   ],
   "allSeasonScores": [
-    16,
+    19,
     13,
     13,
     13,
@@ -642,10 +642,10 @@
     11,
     11,
     11,
-    9,
-    9,
-    9,
-    9,
+    11,
+    11,
+    11,
+    11,
     9,
     9,
     9,
@@ -683,6 +683,7 @@
     9,
     8,
     8,
+    8,
     7,
     7,
     7,
@@ -692,7 +693,6 @@
     7,
     7,
     7,
-    6,
     6,
     6,
     6,
@@ -767,7 +767,7 @@
     "0x53502c26d3844703b7216beb211d4e2cfd122541"
   ],
   "allReferrerCounts": [
-    4,
+    5,
     2,
     1,
     1,
