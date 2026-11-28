@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T08:22:16.584Z",
-  "generatedAtBlock": 136197687,
-  "latestBlock": 136197687,
+  "generatedAt": "2026-11-28T08:33:02.572Z",
+  "generatedAtBlock": 136199029,
+  "latestBlock": 136199029,
   "stats": {
     "streakers": 165,
-    "checkIns": 440,
+    "checkIns": 441,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
+      "handle": "huyng029.ai",
+      "streak": 2,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0x2cace8ff352585c7888e2d6973bfd3503291a761",
       "handle": "vanheo1036.ai",
       "streak": 4,
@@ -254,12 +260,6 @@
     {
       "addr": "0xfde31b640ab351a8d2db450abad82ac042f1ea34",
       "handle": "shaffy.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xe6c8c7998a2c2690fefa8795a92293b02cf033fa",
-      "handle": "zayy.ai",
       "streak": 4,
       "date": "2026-11-28"
     }
@@ -361,9 +361,9 @@
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
+    "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
     "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
-    "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
     "0xadc6857228855d8e5d64001c52261a3706420d40",
@@ -538,6 +538,7 @@
     "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
+    "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
     "0x61e4ec23b38b57122c2e0884132aef7712063a3c",
     "0x92e05367e39f141cd2c914ecf02533d28e504000",
@@ -592,7 +593,6 @@
     "0xda5a2809e1454144f8583728fee9818f65018346",
     "0x0f61e09099feab1b39cddf9eec3e537b7929ebc2",
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
-    "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
     "0xadc6857228855d8e5d64001c52261a3706420d40",
@@ -756,10 +756,10 @@
     5,
     5,
     5,
+    5,
     4,
     4,
     4,
-    3,
     3,
     2,
     2,
