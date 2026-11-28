@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T09:12:18.864Z",
-  "generatedAtBlock": 136204356,
-  "latestBlock": 136204356,
+  "generatedAt": "2026-11-28T09:22:14.946Z",
+  "generatedAtBlock": 136205702,
+  "latestBlock": 136205702,
   "stats": {
-    "streakers": 165,
-    "checkIns": 442,
+    "streakers": 166,
+    "checkIns": 443,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x6a1dcf42d0210309530d0cc5afd361776b673d23",
+      "handle": "scoutxweb3.ai",
+      "streak": 1,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
       "handle": "qkt.ai",
       "streak": 4,
@@ -254,12 +260,6 @@
     {
       "addr": "0x49d937de3064889204bd56069bae5ae56376eb14",
       "handle": "vanheo1057.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x1397152492331b1179953ba14e09ba7533aaf312",
-      "handle": "siweb.ai",
       "streak": 4,
       "date": "2026-11-28"
     }
@@ -368,6 +368,7 @@
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
     "0xadc6857228855d8e5d64001c52261a3706420d40",
     "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7",
+    "0x6a1dcf42d0210309530d0cc5afd361776b673d23",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -596,7 +597,8 @@
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x4e88a8029bdc3285a391959e7c3306583f000a85",
     "0xadc6857228855d8e5d64001c52261a3706420d40",
-    "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7"
+    "0x8b021e3638c6552d0177bbe7a1d53c8b017b64c7",
+    "0x6a1dcf42d0210309530d0cc5afd361776b673d23"
   ],
   "allSeasonScores": [
     19,
@@ -761,6 +763,7 @@
     4,
     4,
     3,
+    2,
     2,
     2,
     2
