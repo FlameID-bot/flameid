@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T06:02:17.232Z",
-  "generatedAtBlock": 136179028,
-  "latestBlock": 136179028,
+  "generatedAt": "2026-11-28T06:12:17.685Z",
+  "generatedAtBlock": 136180370,
+  "latestBlock": 136180370,
   "stats": {
-    "streakers": 162,
-    "checkIns": 426,
+    "streakers": 165,
+    "checkIns": 429,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0xadc6857228855d8e5d64001c52261a3706420d40",
+      "handle": "vc99.ai",
+      "streak": 1,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x4e88a8029bdc3285a391959e7c3306583f000a85",
+      "handle": "tvc.ai",
+      "streak": 1,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
       "handle": "feizi335.ai",
       "streak": 4,
@@ -249,18 +261,6 @@
       "addr": "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
       "handle": "yan520.ai",
       "streak": 3,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xed8b69a2653160c92b3faeaf772e601800660d7d",
-      "handle": "tiantian1314.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
-      "handle": "yenboss.ai",
-      "streak": 4,
       "date": "2026-11-28"
     }
   ],
@@ -365,6 +365,8 @@
     "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xf2b5d4794338396458386923294e052c9dbea3df",
+    "0x4e88a8029bdc3285a391959e7c3306583f000a85",
+    "0xadc6857228855d8e5d64001c52261a3706420d40",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
     "0x2218ccaa4742e976d91c582f89c25d427bd7a46a",
@@ -590,7 +592,9 @@
     "0x0f61e09099feab1b39cddf9eec3e537b7929ebc2",
     "0x395b94e93eb5271510ed476a6cbe68852c88b02f",
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
-    "0xf2b5d4794338396458386923294e052c9dbea3df"
+    "0xf2b5d4794338396458386923294e052c9dbea3df",
+    "0x4e88a8029bdc3285a391959e7c3306583f000a85",
+    "0xadc6857228855d8e5d64001c52261a3706420d40"
   ],
   "allSeasonScores": [
     19,
@@ -754,7 +758,9 @@
     4,
     4,
     3,
-    3
+    3,
+    2,
+    2
   ],
   "allReferrerAddrs": [
     "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
