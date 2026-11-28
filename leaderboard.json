@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T02:42:14.093Z",
-  "generatedAtBlock": 136152379,
-  "latestBlock": 136152379,
+  "generatedAt": "2026-11-28T02:52:35.583Z",
+  "generatedAtBlock": 136153713,
+  "latestBlock": 136153713,
   "stats": {
     "streakers": 162,
-    "checkIns": 419,
+    "checkIns": 420,
     "badges": 124,
     "topStreak": 4
   },
@@ -89,6 +89,13 @@
       "total": 4
     },
     {
+      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
+      "handle": "dicboss.ai",
+      "score": 15,
+      "longest": 4,
+      "total": 4
+    },
+    {
       "addr": "0x91633ae907ee21070d00e7efe4e5ee770095b811",
       "handle": "thanhtung93.ai",
       "score": 13,
@@ -101,13 +108,6 @@
       "score": 13,
       "longest": 4,
       "total": 4
-    },
-    {
-      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
-      "handle": "dicboss.ai",
-      "score": 13,
-      "longest": 3,
-      "total": 3
     },
     {
       "addr": "0xe0ef50928e36b5538b705b0860e8e45705971a07",
@@ -204,6 +204,18 @@
   ],
   "recent": [
     {
+      "addr": "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
+      "handle": "dicboss.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
+      "handle": "yan520.ai",
+      "streak": 3,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xed8b69a2653160c92b3faeaf772e601800660d7d",
       "handle": "tiantian1314.ai",
       "streak": 4,
@@ -249,18 +261,6 @@
       "addr": "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
       "handle": "deniwrh.ai",
       "streak": 2,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x30588cfbce27269d4e76128c7ed934e270c9c927",
-      "handle": "guli999.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xa96ba2ecacbcc0e986313cbe6d061798d983786f",
-      "handle": "guli666.ai",
-      "streak": 4,
       "date": "2026-11-28"
     }
   ],
@@ -308,6 +308,7 @@
     "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
+    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
     "0xed8b69a2653160c92b3faeaf772e601800660d7d",
@@ -342,7 +343,6 @@
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0xb9629f4154648be654833978ed7b87037428c710",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
-    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
     "0xa0558776a5c971ccc8c229f267e526e9ba6509bf",
     "0xe6c8c7998a2c2690fefa8795a92293b02cf033fa",
@@ -354,11 +354,11 @@
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
+    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
     "0xe563f043e9cb28136e0ad379a7a87f9a46da6209",
-    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
@@ -430,9 +430,9 @@
   ],
   "allSeasonAddrs": [
     "0xe55ced81314edf295594fecc1ed5f27d5d3b2eae",
+    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
-    "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xe0ef50928e36b5538b705b0860e8e45705971a07",
     "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
@@ -518,10 +518,10 @@
     "0x88f5d0a9d1a86d8dee087cb8ce490ce5a22ca134",
     "0xdaee9ef06d9f51254dddcd592ef53a3bf1836383",
     "0xd010bdf93f9fd684c11f53dcedc95ea079624dc3",
+    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x146a8dc25afdc5af565ec9870550d7992d543ee8",
     "0xccf59445de8633c6ff5e5105c7f560c306514e09",
     "0xe1e005fa06e1ce43797c5a936ba59b824453d8bb",
-    "0xe7d57f17e258ba7df64e49300c6676da057f9c61",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
     "0xe91db726be71d62a44a8d300bfdef55dc5104c43",
@@ -594,7 +594,7 @@
   ],
   "allSeasonScores": [
     19,
-    13,
+    15,
     13,
     13,
     11,
