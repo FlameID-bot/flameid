@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-28T09:32:21.228Z",
-  "generatedAtBlock": 136207030,
-  "latestBlock": 136207030,
+  "generatedAt": "2026-11-28T09:42:17.039Z",
+  "generatedAtBlock": 136208349,
+  "latestBlock": 136208349,
   "stats": {
     "streakers": 166,
     "checkIns": 443,
-    "badges": 124,
+    "badges": 125,
     "topStreak": 4
   },
   "streakTop10": [
