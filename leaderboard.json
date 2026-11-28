@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T04:52:18.436Z",
-  "generatedAtBlock": 136169712,
-  "latestBlock": 136169712,
+  "generatedAt": "2026-11-28T05:02:56.194Z",
+  "generatedAtBlock": 136171036,
+  "latestBlock": 136171036,
   "stats": {
     "streakers": 162,
-    "checkIns": 423,
+    "checkIns": 424,
     "badges": 124,
     "topStreak": 4
   },
@@ -204,6 +204,12 @@
   ],
   "recent": [
     {
+      "addr": "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
+      "handle": "xbtcx.ai",
+      "streak": 1,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0x4f10ebf3f3d3c48f39dd7c6e0f919552acf0464c",
       "handle": "rifkifxzero78.ai",
       "streak": 4,
@@ -255,12 +261,6 @@
       "addr": "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
       "handle": "nghe2025.ai",
       "streak": 1,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xc725c4a52032780ed7b751f37db2b72f0f30abc2",
-      "handle": "gmx6181.ai",
-      "streak": 4,
       "date": "2026-11-28"
     }
   ],
@@ -362,6 +362,7 @@
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0x7c675d8fe92f36e521093f8c3d9525f245f7466a",
+    "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x31d489b2dcde096e1c8b373143d316e910fa36ab",
     "0xf2b5d4794338396458386923294e052c9dbea3df",
     "0x6f29df985a9cea4ffd22027b93d50a2133fef0ed",
@@ -380,7 +381,6 @@
     "0xb2f270e9b1280567f1f78e871ce5a285a21cc8cb",
     "0x8b6f953eaeae6d0119a7cbe035e9ba5773f75e79",
     "0xc26c0cb63a5cf5f7865ea866fb516134c872a603",
-    "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x966a7ff1eb1c88a9a1db4db55b9fe080db8ceca9",
     "0x940ac510933c9a403a1537ed8fda6abde14c6c87",
     "0xb1235fd7c2e324c1c4080d342c476a27cc0090b4",
@@ -532,6 +532,7 @@
     "0xbbde73fcf8ff0199089c186fa5ab59dfbcd4c89d",
     "0x7c87f1a9e539dc79e1354121a64b8cf31d04cb4e",
     "0xb9ca3c3b362847332a451cff32e3a4da3015da24",
+    "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x6164a6f159bed36469b98b25c9f103f91cd989d7",
     "0x8e5282cba82988328f0c3febfe8f474a754bba6c",
     "0xcd710a311aedb31068661b6c8dfcdaff555b806a",
@@ -542,7 +543,6 @@
     "0xb2f270e9b1280567f1f78e871ce5a285a21cc8cb",
     "0x8b6f953eaeae6d0119a7cbe035e9ba5773f75e79",
     "0xc26c0cb63a5cf5f7865ea866fb516134c872a603",
-    "0x6f59a67fc5d835df0f7d7aed7638980feba71af3",
     "0x966a7ff1eb1c88a9a1db4db55b9fe080db8ceca9",
     "0x940ac510933c9a403a1537ed8fda6abde14c6c87",
     "0xb1235fd7c2e324c1c4080d342c476a27cc0090b4",
@@ -696,7 +696,7 @@
     7,
     7,
     7,
-    5,
+    6,
     5,
     5,
     5,
