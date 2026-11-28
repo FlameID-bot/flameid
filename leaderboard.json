@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-28T00:32:23.911Z",
-  "generatedAtBlock": 136135073,
-  "latestBlock": 136135073,
+  "generatedAt": "2026-11-28T00:42:10.115Z",
+  "generatedAtBlock": 136136383,
+  "latestBlock": 136136383,
   "stats": {
     "streakers": 162,
-    "checkIns": 380,
+    "checkIns": 385,
     "badges": 124,
     "topStreak": 4
   },
@@ -45,8 +45,22 @@
       "total": 4
     },
     {
+      "addr": "0x5313fd9a277175b681509a486d055dc95d207a6f",
+      "handle": "kingmeme.ai",
+      "effective": 4,
+      "longest": 4,
+      "total": 4
+    },
+    {
       "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
       "handle": "jinder888.ai",
+      "effective": 4,
+      "longest": 4,
+      "total": 4
+    },
+    {
+      "addr": "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
+      "handle": "minhdien336.ai",
       "effective": 4,
       "longest": 4,
       "total": 4
@@ -61,20 +75,6 @@
     {
       "addr": "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
       "handle": "walletweb3.ai",
-      "effective": 4,
-      "longest": 4,
-      "total": 4
-    },
-    {
-      "addr": "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
-      "handle": "ganggangtrader.ai",
-      "effective": 4,
-      "longest": 4,
-      "total": 4
-    },
-    {
-      "addr": "0xf66cc2c9f3312f23bf2f4b5c2ab2146647bbe413",
-      "handle": "nghuy29.ai",
       "effective": 4,
       "longest": 4,
       "total": 4
@@ -131,6 +131,13 @@
       "total": 4
     },
     {
+      "addr": "0x5313fd9a277175b681509a486d055dc95d207a6f",
+      "handle": "kingmeme.ai",
+      "score": 11,
+      "longest": 4,
+      "total": 4
+    },
+    {
       "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
       "handle": "jinder888.ai",
       "score": 11,
@@ -138,15 +145,8 @@
       "total": 4
     },
     {
-      "addr": "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
-      "handle": "sierrablue1102.ai",
-      "score": 11,
-      "longest": 4,
-      "total": 4
-    },
-    {
-      "addr": "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
-      "handle": "walletweb3.ai",
+      "addr": "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
+      "handle": "minhdien336.ai",
       "score": 11,
       "longest": 4,
       "total": 4
@@ -204,6 +204,36 @@
   ],
   "recent": [
     {
+      "addr": "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
+      "handle": "leethyb.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
+      "handle": "yeonvi.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
+      "handle": "tuynker1.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
+      "handle": "minhdien336.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
+      "addr": "0x5313fd9a277175b681509a486d055dc95d207a6f",
+      "handle": "kingmeme.ai",
+      "streak": 4,
+      "date": "2026-11-28"
+    },
+    {
       "addr": "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
       "handle": "minhhung05.ai",
       "streak": 4,
@@ -232,36 +262,6 @@
       "handle": "lankonpro.ai",
       "streak": 4,
       "date": "2026-11-28"
-    },
-    {
-      "addr": "0x25885ceb065f84536284446bf2fd2f8f2c10ca97",
-      "handle": "apples.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xe0ef50928e36b5538b705b0860e8e45705971a07",
-      "handle": "xiaozhang0113.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
-      "handle": "brendatrinh.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
-      "handle": "jinder888.ai",
-      "streak": 4,
-      "date": "2026-11-28"
-    },
-    {
-      "addr": "0xccf59445de8633c6ff5e5105c7f560c306514e09",
-      "handle": "aruljp2211.ai",
-      "streak": 3,
-      "date": "2026-11-28"
     }
   ],
   "allStreakAddrs": [
@@ -270,7 +270,9 @@
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
+    "0x5313fd9a277175b681509a486d055dc95d207a6f",
     "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
+    "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
     "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
@@ -285,6 +287,9 @@
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
+    "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
+    "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
+    "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
@@ -294,9 +299,7 @@
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0x91633ae907ee21070d00e7efe4e5ee770095b811",
     "0xf8295d390864ae7be6b0b4bbc24ca35f7bdba241",
-    "0x5313fd9a277175b681509a486d055dc95d207a6f",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
-    "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
     "0x1f6f8765d874513c00c659d0d94b855a53617a8c",
     "0xde1e87cc48151f324ee21a052688aba276595305",
@@ -325,10 +328,7 @@
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x048ceb2060aad92249341d789e025564160157fb",
-    "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
-    "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
     "0xb9629f4154648be654833978ed7b87037428c710",
-    "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
     "0xf1c380acb783e8aca38711961446ed1b3f2fbf72",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
@@ -436,7 +436,9 @@
     "0x8a8d750491958d8e8326f82ecfab147d532f4ad6",
     "0xe30b546eaedd27c51ed3dc7f4129eb5d5030b0cb",
     "0x051cbe14ed9ed27808002340f2a01d215abb9c28",
+    "0x5313fd9a277175b681509a486d055dc95d207a6f",
     "0x5560a51444674c4d38952ba5dc751b6e0a5da743",
+    "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x5ed282d3b488fb54cb0204ace1627e7434e2ec20",
     "0x7cfaa8d55fdc852713c4e5080500582083c4f8e1",
     "0x14f395059726c3da2f3e4a1f969c6e61ae844731",
@@ -451,6 +453,9 @@
     "0xfe993ca6be8c34a57e73271083f1fef20b90d287",
     "0x6707b5c761571c9286c589d361ce259fd6ef9fa8",
     "0xc0b5b66f6da15a8a7ebe163be18049aa38c0333c",
+    "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
+    "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
+    "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0xa49d6b81530fbf7d63c58a563ee94d3562d60dc3",
     "0x3f957083443a4e0c998bb4b2ecb7058409dd74a8",
     "0x27e31baf7c9de6ee099e84dea18ae2bf12c3adfa",
@@ -461,9 +466,7 @@
     "0x4d50dd3e57d1f4adade559bd075bca0496aaa29b",
     "0xad680b34690ab22cf273301fb72369fe0a988806",
     "0xf8295d390864ae7be6b0b4bbc24ca35f7bdba241",
-    "0x5313fd9a277175b681509a486d055dc95d207a6f",
     "0x098f7733742a7845598e6e4a0a7a4d816cff7365",
-    "0x4db2c2288812de1992d6bc983d51549d6e91ef76",
     "0x3b9dd9f2727fb3a2e939979cbfd3756372d7ec35",
     "0xde1e87cc48151f324ee21a052688aba276595305",
     "0x7b71fa1569adb83e4434d6b95fcb52be879206ed",
@@ -490,10 +493,7 @@
     "0x0f4737bd0f64b2464684290de78d1bfedc969a30",
     "0x1397152492331b1179953ba14e09ba7533aaf312",
     "0x048ceb2060aad92249341d789e025564160157fb",
-    "0x028cd3c6ba5b0ab426925b99cfcb96f61365098f",
-    "0x1e5297f8123fb99e322a312197953f3cdf5d3f4e",
     "0xb9629f4154648be654833978ed7b87037428c710",
-    "0xb030a31e54bb1a91484c328a2165a1cc2cebd3e0",
     "0x0193b638b6f3f4fc1844b0bdf1a7783b437b2779",
     "0xfe345acf34ae419e39bb88e62cb91c904b24e0c1",
     "0xe03c70dc2c1456f30edc7505e25d5a24ebcdcc90",
@@ -622,11 +622,11 @@
     11,
     11,
     11,
-    9,
-    9,
-    9,
-    9,
-    9,
+    11,
+    11,
+    11,
+    11,
+    11,
     9,
     9,
     9,
